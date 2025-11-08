@@ -1,6 +1,6 @@
 baseURL: "https://nasimbio.github.io/bioinfo-blog/"
 languageCode: "en-us"
-title: "My Blog"
+title: "Bioinformatics Blogs By Nasim Rahmatpour"
 publishDir: "docs"
 
 theme: hugo-lithium
