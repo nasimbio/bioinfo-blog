@@ -20,7 +20,7 @@
       <link>https://nasimbio.github.io/bioinfo-blog/about/</link>
       <pubDate>Thu, 05 May 2016 21:48:51 -0700</pubDate>
       <guid>https://nasimbio.github.io/bioinfo-blog/about/</guid>
-      <description>&lt;p&gt;This is a &amp;ldquo;hello world&amp;rdquo; example website for the &lt;a href=&#34;https://github.com/rstudio/blogdown&#34;&gt;&lt;strong&gt;blogdown&lt;/strong&gt;&lt;/a&gt; package. The theme was forked from &lt;a href=&#34;https://github.com/jrutheiser/hugo-lithium-theme&#34;&gt;@jrutheiser/hugo-lithium-theme&lt;/a&gt; and modified by &lt;a href=&#34;https://github.com/yihui/hugo-lithium&#34;&gt;Yihui Xie&lt;/a&gt;.&lt;/p&gt;</description>
+      <description>&lt;hr&gt;&#xA;&lt;h2 id=&#34;title-about&#34;&gt;title: &amp;ldquo;About&amp;rdquo;&lt;/h2&gt;&#xA;&lt;h1 id=&#34;about-me&#34;&gt;About me&lt;/h1&gt;&#xA;&lt;p&gt;I’m a bioinformatics scientist specializing in single-cell, spatial, and multi-omic data analysis.&lt;/p&gt;&#xA;&lt;p&gt;I created this blog to write about different bioinformatics topics. Writing helps me focus, organize my thoughts, and remember and retain the key concepts better.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
