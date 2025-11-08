@@ -4,7 +4,7 @@ title: "Bioinformatics Blog by Nasim Rahmatpour"
 
 # Welcome 👋
 
-Hi, I’m **Nasim Rahmatpour**, a bioinformatics scientist specializing in single-cell, spatial, and multi-omic data analysis.
+Hi, I’m **Nasim**, a bioinformatics scientist working on single-cell, spatial, and multi-omic data analysis.
 
 I use this blog to document the topics I’m learning and working on.
 
