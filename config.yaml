@@ -1,8 +1,8 @@
+baseURL: "https://nasimbio.github.io/bioinfo-blog/"
+languageCode: "en-us"
+title: "My Blog"
 publishDir: "docs"
 
-baseurl: /
-languageCode: en-US
-title: A Hugo website
 theme: hugo-lithium
 ignoreFiles:
   - \.Rmd$

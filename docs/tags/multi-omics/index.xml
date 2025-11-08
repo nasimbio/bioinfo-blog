@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Multi-Omics on A Hugo website</title>
-    <link>/tags/multi-omics/</link>
-    <description>Recent content in Multi-Omics on A Hugo website</description>
+    <title>Multi-Omics on My Blog</title>
+    <link>https://nasimbio.github.io/bioinfo-blog/tags/multi-omics/</link>
+    <description>Recent content in Multi-Omics on My Blog</description>
     <generator>Hugo</generator>
-    <language>en-US</language>
+    <language>en-us</language>
     <lastBuildDate>Thu, 06 Nov 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/multi-omics/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://nasimbio.github.io/bioinfo-blog/tags/multi-omics/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>🔬 Multi-Omic Data Integration Challenges &amp; Strategies</title>
-      <link>/2025/11/06/multi-omic-data-integration-challenges-strategies/</link>
+      <link>https://nasimbio.github.io/bioinfo-blog/2025/11/06/multi-omic-data-integration-challenges-strategies/</link>
       <pubDate>Thu, 06 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>/2025/11/06/multi-omic-data-integration-challenges-strategies/</guid>
+      <guid>https://nasimbio.github.io/bioinfo-blog/2025/11/06/multi-omic-data-integration-challenges-strategies/</guid>
       <description>&lt;p&gt;Integrating multi-omic datasets is powerful but far from simple. Each omic layer comes with its own preprocessing methods, normalization and scaling requirements, and sources of noise or batch effects.&lt;/p&gt;&#xA;&lt;p&gt;Adding to the complexity, signals between omic layers don’t always align, for example, highly expressed genes may not necessarily correspond to more accessible chromatin regions in ATAC-seq data.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-define-your-biological-question&#34;&gt;🧠 Define Your Biological Question&lt;/h2&gt;&#xA;&lt;p&gt;Before diving into integration, it’s crucial to define your biological question:&lt;/p&gt;</description>
     </item>
   </channel>

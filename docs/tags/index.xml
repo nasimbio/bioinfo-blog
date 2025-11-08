@@ -1,74 +1,74 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on A Hugo website</title>
-    <link>/tags/</link>
-    <description>Recent content in Tags on A Hugo website</description>
+    <title>Tags on My Blog</title>
+    <link>https://nasimbio.github.io/bioinfo-blog/tags/</link>
+    <description>Recent content in Tags on My Blog</description>
     <generator>Hugo</generator>
-    <language>en-US</language>
+    <language>en-us</language>
     <lastBuildDate>Thu, 06 Nov 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://nasimbio.github.io/bioinfo-blog/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Integration</title>
-      <link>/tags/integration/</link>
+      <link>https://nasimbio.github.io/bioinfo-blog/tags/integration/</link>
       <pubDate>Thu, 06 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>/tags/integration/</guid>
+      <guid>https://nasimbio.github.io/bioinfo-blog/tags/integration/</guid>
       <description></description>
     </item>
     <item>
       <title>MOFA&#43;</title>
-      <link>/tags/mofa&#43;/</link>
+      <link>https://nasimbio.github.io/bioinfo-blog/tags/mofa&#43;/</link>
       <pubDate>Thu, 06 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>/tags/mofa&#43;/</guid>
+      <guid>https://nasimbio.github.io/bioinfo-blog/tags/mofa&#43;/</guid>
       <description></description>
     </item>
     <item>
       <title>Multi-Omics</title>
-      <link>/tags/multi-omics/</link>
+      <link>https://nasimbio.github.io/bioinfo-blog/tags/multi-omics/</link>
       <pubDate>Thu, 06 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>/tags/multi-omics/</guid>
+      <guid>https://nasimbio.github.io/bioinfo-blog/tags/multi-omics/</guid>
       <description></description>
     </item>
     <item>
       <title>Seurat</title>
-      <link>/tags/seurat/</link>
+      <link>https://nasimbio.github.io/bioinfo-blog/tags/seurat/</link>
       <pubDate>Thu, 06 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>/tags/seurat/</guid>
+      <guid>https://nasimbio.github.io/bioinfo-blog/tags/seurat/</guid>
       <description></description>
     </item>
     <item>
       <title>TotalVI</title>
-      <link>/tags/totalvi/</link>
+      <link>https://nasimbio.github.io/bioinfo-blog/tags/totalvi/</link>
       <pubDate>Thu, 06 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>/tags/totalvi/</guid>
+      <guid>https://nasimbio.github.io/bioinfo-blog/tags/totalvi/</guid>
       <description></description>
     </item>
     <item>
       <title>WNN</title>
-      <link>/tags/wnn/</link>
+      <link>https://nasimbio.github.io/bioinfo-blog/tags/wnn/</link>
       <pubDate>Thu, 06 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>/tags/wnn/</guid>
+      <guid>https://nasimbio.github.io/bioinfo-blog/tags/wnn/</guid>
       <description></description>
     </item>
     <item>
       <title>Plot</title>
-      <link>/tags/plot/</link>
+      <link>https://nasimbio.github.io/bioinfo-blog/tags/plot/</link>
       <pubDate>Tue, 01 Dec 2020 21:13:14 -0500</pubDate>
-      <guid>/tags/plot/</guid>
+      <guid>https://nasimbio.github.io/bioinfo-blog/tags/plot/</guid>
       <description></description>
     </item>
     <item>
       <title>R Markdown</title>
-      <link>/tags/r-markdown/</link>
+      <link>https://nasimbio.github.io/bioinfo-blog/tags/r-markdown/</link>
       <pubDate>Tue, 01 Dec 2020 21:13:14 -0500</pubDate>
-      <guid>/tags/r-markdown/</guid>
+      <guid>https://nasimbio.github.io/bioinfo-blog/tags/r-markdown/</guid>
       <description></description>
     </item>
     <item>
       <title>Regression</title>
-      <link>/tags/regression/</link>
+      <link>https://nasimbio.github.io/bioinfo-blog/tags/regression/</link>
       <pubDate>Tue, 01 Dec 2020 21:13:14 -0500</pubDate>
-      <guid>/tags/regression/</guid>
+      <guid>https://nasimbio.github.io/bioinfo-blog/tags/regression/</guid>
       <description></description>
     </item>
   </channel>
