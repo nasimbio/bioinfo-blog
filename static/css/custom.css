@@ -1,0 +1,11 @@
+/* Custom style overrides for Nasim's blog */
+
+/* Make the homepage title smaller and keep on one line */
+body.home h1.title,
+h1.title {
+  font-size: 1.8rem;      /* adjust size */
+  line-height: 1.2;
+  white-space: nowrap;    /* prevent line break */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

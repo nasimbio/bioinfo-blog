@@ -21,6 +21,7 @@ menu:
 params:
   author: "Nasim Rahmatpour"
   description: "Bioinformatics blog by Nasim Rahmatpour"
+  customCSS: ["css/custom.css"]
   github: "https://github.com/nasimbio"
   MathJaxCDN: //cdnjs.cloudflare.com/ajax/libs
   MathJaxVersion: 2.7.5
