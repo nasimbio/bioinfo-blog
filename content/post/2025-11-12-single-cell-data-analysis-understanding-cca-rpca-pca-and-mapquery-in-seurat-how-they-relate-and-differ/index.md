@@ -1,5 +1,5 @@
 ---
-title: "Single-Cell Data Analysis: Understanding CCA, RPCA, PCA, and MapQuery in Seurat — How They Relate and Differ"
+title: "Single-Cell Data Analysis: Understanding CCA, RPCA, PCA, and MapQuery in Seurat; How They Relate and Differ"
 author: "Nasim Rahmatpour"
 date: "2025-11-12"
 slug: "single-cell-data-analysis-understanding-cca-rpca-pca-and-mapquery-in-seurat-how-they-relate-and-differ"
