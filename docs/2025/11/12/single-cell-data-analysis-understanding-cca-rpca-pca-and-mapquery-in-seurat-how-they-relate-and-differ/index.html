@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.152.2">
+
+
+<title>Single-Cell Data Analysis: Understanding CCA, RPCA, PCA, and MapQuery in Seurat — How They Relate and Differ - Bioinformatics Blogs By Nasim Rahmatpour</title>
+<meta property="og:title" content="Single-Cell Data Analysis: Understanding CCA, RPCA, PCA, and MapQuery in Seurat — How They Relate and Differ - Bioinformatics Blogs By Nasim Rahmatpour">
+
+
+  <link href='https://nasimbio.github.io/bioinfo-blog/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/bioinfo-blog/css/fonts.css" media="all">
+<link rel="stylesheet" href="/bioinfo-blog/css/main.css" media="all">
+
+<link rel="stylesheet" href="/bioinfo-blog/css/custom.css">
+
+<link rel="stylesheet" href="/bioinfo-blog/css/custom.css">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/bioinfo-blog/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/bioinfo-blog/about/">About</a></li>
+    
+    <li><a href="https://github.com/nasimbio">GitHub</a></li>
+    
+    <li><a href="https://www.linkedin.com/in/nasimrahmatpour/">LinkedIn</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">2 min read</span>
+    
+
+    <h1 class="article-title">Single-Cell Data Analysis: Understanding CCA, RPCA, PCA, and MapQuery in Seurat — How They Relate and Differ</h1>
+
+    
+    <span class="article-date">2025-11-12</span>
+    
+
+    <div class="article-content">
+      
+      <p><strong>By Nasim</strong></p>
+<p>🔹 1. CCA for Integration (Batch Effect Removal)
+Canonical Correlation Analysis (CCA) identifies correlated gene expression patterns between datasets, finding the directions that maximize covariation across them.
+Seurat uses these correlations to define anchors or pairs of biologically similar cells across datasets.
+These anchors then drive the creation of a new integrated assay, which contains batch-corrected expression values suitable for joint analysis (clustering, visualization, and DGE).
+🔹 2. CCA and PCA for Label Transfer
+For label transfer, the goal shifts from merging datasets to mapping a new (query) dataset onto a labeled (reference) dataset.
+Here, Seurat again finds anchors, but instead of correcting expression values, it uses them for KNN-based label propagation: each query cell inherits information (e.g., cell type, PCA coordinates) from its k nearest anchors in the reference space.
+•	CCA-based label transfer: anchors are found via correlated features (CCA).
+•	PCA-based label transfer: anchors are found using mutual nearest neighbors (MNNs) in PCA space, followed by the same KNN-weighted propagation.
+🔹 3. RPCA for Faster Integration (Batch Effect Removal)
+Reciprocal PCA (RPCA) is a more scalable, memory-efficient variant of CCA for integration.
+Instead of computing a single joint CCA across all datasets, RPCA performs PCA separately for each dataset, then identifies MNN-based anchors across those PCA spaces.
+This approach is ideal for large or closely related datasets.
+🔹 4. MapQuery
+Unlike integration, MapQuery() is used after anchors are found to project query cells into the reference’s PCA or UMAP space and transfer labels.
+It doesn’t merge datasets, instead, it aligns query data to the reference coordinate system.</p>
+<p>Summary:
+•	CCA → Finds correlated features between datasets; used for both integration and label transfer.
+•	RPCA → PCA-based integration using MNN anchors; faster and scalable.
+•	Integration → Produces an integrated assay with batch-corrected expression values.
+•	Label transfer → Uses anchors + KNN-weighted propagation to map query data to a labeled reference.
+•	CCA / RPCA → integration (new batch-corrected assay)
+•	CCA / PCA + MapQuery → label transfer (projected query, label propagation)</p>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/bioinfo-blog/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+    
+
+    
+  </body>
+</html>
+

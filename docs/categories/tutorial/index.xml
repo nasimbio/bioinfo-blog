@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Seurat on Bioinformatics Blogs By Nasim Rahmatpour</title>
-    <link>https://nasimbio.github.io/bioinfo-blog/tags/seurat/</link>
-    <description>Recent content in Seurat on Bioinformatics Blogs By Nasim Rahmatpour</description>
+    <title>Tutorial on Bioinformatics Blogs By Nasim Rahmatpour</title>
+    <link>https://nasimbio.github.io/bioinfo-blog/categories/tutorial/</link>
+    <description>Recent content in Tutorial on Bioinformatics Blogs By Nasim Rahmatpour</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 12 Nov 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://nasimbio.github.io/bioinfo-blog/tags/seurat/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://nasimbio.github.io/bioinfo-blog/categories/tutorial/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Single-Cell Data Analysis: Understanding CCA, RPCA, PCA, and MapQuery in Seurat — How They Relate and Differ</title>
       <link>https://nasimbio.github.io/bioinfo-blog/2025/11/12/single-cell-data-analysis-understanding-cca-rpca-pca-and-mapquery-in-seurat-how-they-relate-and-differ/</link>
       <pubDate>Wed, 12 Nov 2025 00:00:00 +0000</pubDate>
       <guid>https://nasimbio.github.io/bioinfo-blog/2025/11/12/single-cell-data-analysis-understanding-cca-rpca-pca-and-mapquery-in-seurat-how-they-relate-and-differ/</guid>
       <description>&lt;p&gt;&lt;strong&gt;By Nasim&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;🔹 1. CCA for Integration (Batch Effect Removal)&#xA;Canonical Correlation Analysis (CCA) identifies correlated gene expression patterns between datasets, finding the directions that maximize covariation across them.&#xA;Seurat uses these correlations to define anchors or pairs of biologically similar cells across datasets.&#xA;These anchors then drive the creation of a new integrated assay, which contains batch-corrected expression values suitable for joint analysis (clustering, visualization, and DGE).&#xA;🔹 2. CCA and PCA for Label Transfer&#xA;For label transfer, the goal shifts from merging datasets to mapping a new (query) dataset onto a labeled (reference) dataset.&#xA;Here, Seurat again finds anchors, but instead of correcting expression values, it uses them for KNN-based label propagation: each query cell inherits information (e.g., cell type, PCA coordinates) from its k nearest anchors in the reference space.&#xA;•&#x9;CCA-based label transfer: anchors are found via correlated features (CCA).&#xA;•&#x9;PCA-based label transfer: anchors are found using mutual nearest neighbors (MNNs) in PCA space, followed by the same KNN-weighted propagation.&#xA;🔹 3. RPCA for Faster Integration (Batch Effect Removal)&#xA;Reciprocal PCA (RPCA) is a more scalable, memory-efficient variant of CCA for integration.&#xA;Instead of computing a single joint CCA across all datasets, RPCA performs PCA separately for each dataset, then identifies MNN-based anchors across those PCA spaces.&#xA;This approach is ideal for large or closely related datasets.&#xA;🔹 4. MapQuery&#xA;Unlike integration, MapQuery() is used after anchors are found to project query cells into the reference’s PCA or UMAP space and transfer labels.&#xA;It doesn’t merge datasets, instead, it aligns query data to the reference coordinate system.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>🔬 Multi-Omic Data Integration Challenges &amp; Strategies</title>
-      <link>https://nasimbio.github.io/bioinfo-blog/2025/11/06/multi-omic-data-integration-challenges-strategies/</link>
-      <pubDate>Thu, 06 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://nasimbio.github.io/bioinfo-blog/2025/11/06/multi-omic-data-integration-challenges-strategies/</guid>
-      <description>&lt;p&gt;Integrating multi-omic datasets is powerful but far from simple. Each omic layer comes with its own preprocessing methods, normalization and scaling requirements, and sources of noise or batch effects.&lt;/p&gt;&#xA;&lt;p&gt;Adding to the complexity, signals between omic layers don’t always align, for example, highly expressed genes may not necessarily correspond to more accessible chromatin regions in ATAC-seq data.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-define-your-biological-question&#34;&gt;🧠 Define Your Biological Question&lt;/h2&gt;&#xA;&lt;p&gt;Before diving into integration, it’s crucial to define your biological question:&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
