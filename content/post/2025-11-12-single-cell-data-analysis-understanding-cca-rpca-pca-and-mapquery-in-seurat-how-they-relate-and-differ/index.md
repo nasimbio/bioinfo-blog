@@ -18,7 +18,9 @@ These anchors then drive the creation of a new integrated assay, which contains 
 🔹 2. CCA and PCA for Label Transfer
 For label transfer, the goal shifts from merging datasets to mapping a new (query) dataset onto a labeled (reference) dataset.
 Here, Seurat again finds anchors, but instead of correcting expression values, it uses them for KNN-based label propagation: each query cell inherits information (e.g., cell type, PCA coordinates) from its k nearest anchors in the reference space.
+
 •	CCA-based label transfer: anchors are found via correlated features (CCA).
+
 •	PCA-based label transfer: anchors are found using mutual nearest neighbors (MNNs) in PCA space, followed by the same KNN-weighted propagation.
 
 🔹 3. RPCA for Faster Integration (Batch Effect Removal)
@@ -31,6 +33,7 @@ Unlike integration, MapQuery() is used after anchors are found to project query 
 It doesn’t merge datasets, instead, it aligns query data to the reference coordinate system.
 
 Summary:
+
 •	CCA → Finds correlated features between datasets; used for both integration and label transfer.
 
 •	RPCA → PCA-based integration using MNN anchors; faster and scalable.
