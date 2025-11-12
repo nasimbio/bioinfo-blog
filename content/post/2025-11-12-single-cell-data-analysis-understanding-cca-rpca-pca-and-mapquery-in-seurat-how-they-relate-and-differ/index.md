@@ -8,7 +8,6 @@ tags: ["single-cell", "Seurat", "CCA", "RPCA", "label transfer"]
 categories: ["tutorial"]
 ---
 
-**By Nasim**
 
 🔹 1. CCA for Integration (Batch Effect Removal)
 
