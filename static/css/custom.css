@@ -1,11 +1,11 @@
-/* Nasim's custom styles */
-/* Make homepage title smaller and keep it on one line */
+/* shrink homepage title and keep it on one line */
 body.home h1.title,
 header .title,
 h1.title {
-  font-size: 1.8rem;   /* try 1.6rem or 2rem to adjust */
+  font-size: 1.6rem;
   line-height: 1.2;
-  white-space: nowrap; /* prevents wrapping to next line */
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
