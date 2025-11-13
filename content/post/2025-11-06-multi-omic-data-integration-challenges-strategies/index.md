@@ -1,5 +1,5 @@
 ---
-title: "🔬 Multi-Omic Data Integration Challenges & Strategies"
+title: "Multi-Omic Data Integration Challenges & Strategies"
 date: 2025-11-06
 draft: false
 tags: ["multi-omics", "integration", "Seurat", "MOFA+", "WNN", "TotalVI"]
