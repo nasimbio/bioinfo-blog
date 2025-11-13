@@ -9,6 +9,13 @@
     <lastBuildDate>Wed, 12 Nov 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nasimbio.github.io/bioinfo-blog/tags/seurat/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Centering and Scaling Before PCA: Why It Matters</title>
+      <link>https://nasimbio.github.io/bioinfo-blog/2025/11/12/centering-and-scaling-before-pca-why-it-matters/</link>
+      <pubDate>Wed, 12 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://nasimbio.github.io/bioinfo-blog/2025/11/12/centering-and-scaling-before-pca-why-it-matters/</guid>
+      <description>&lt;p&gt;🧠 Centering and Scaling Before PCA; Why It Matters&lt;/p&gt;&#xA;&lt;p&gt;When performing PCA on gene expression data, centering and scaling aren’t just optional, they’re essential to ensure PCA captures true biological variation rather than numerical artifacts. PCA is powerful, but only when the data are centered and scaled correctly.&#xA;Otherwise, it captures the wrong kind of “variance.”&lt;/p&gt;&#xA;&lt;p&gt;🎯 Centering&lt;/p&gt;&#xA;&lt;p&gt;PCA ideally looks for directions of maximum variance around the mean of each gene.&#xA;But if we don’t center the data, PCA instead measures variance around the origin (0), not around each gene’s mean.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Single-Cell Data Analysis: Understanding CCA, RPCA, PCA, and MapQuery in Seurat; How They Relate and Differ</title>
       <link>https://nasimbio.github.io/bioinfo-blog/2025/11/12/single-cell-data-analysis-understanding-cca-rpca-pca-and-mapquery-in-seurat-how-they-relate-and-differ/</link>
       <pubDate>Wed, 12 Nov 2025 00:00:00 +0000</pubDate>
@@ -16,7 +23,7 @@
       <description>&lt;p&gt;🔹 1. CCA for Integration (Batch Effect Removal)&lt;/p&gt;&#xA;&lt;p&gt;Canonical Correlation Analysis (CCA) identifies correlated gene expression patterns between datasets, finding the directions that maximize covariation across them.&#xA;Seurat uses these correlations to define anchors or pairs of biologically similar cells across datasets.&#xA;These anchors then drive the creation of a new integrated assay, which contains batch-corrected expression values suitable for joint analysis (clustering, visualization, and DGE).&lt;/p&gt;&#xA;&lt;p&gt;🔹 2. CCA and PCA for Label Transfer&lt;/p&gt;</description>
     </item>
     <item>
-      <title>🔬 Multi-Omic Data Integration Challenges &amp; Strategies</title>
+      <title>Multi-Omic Data Integration Challenges &amp; Strategies</title>
       <link>https://nasimbio.github.io/bioinfo-blog/2025/11/06/multi-omic-data-integration-challenges-strategies/</link>
       <pubDate>Thu, 06 Nov 2025 00:00:00 +0000</pubDate>
       <guid>https://nasimbio.github.io/bioinfo-blog/2025/11/06/multi-omic-data-integration-challenges-strategies/</guid>

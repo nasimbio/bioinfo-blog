@@ -1,10 +1,10 @@
 ---
-title: Centering and Scaling Before PCA; Why It Matters
-author: "Nasim Rahmatpour"
+title: "Centering and Scaling Before PCA: Why It Matters"
+author: "Nasim"
 date: "2025-11-12"
-slug: "single-cell-data-analysis-understanding-cca-rpca-pca-and-mapquery-in-seurat-how-they-relate-and-differ"
+slug: "centering-and-scaling-before-pca-why-it-matters"
 draft: false
-tags: ["single-cell", "Seurat", "Centring ", "Scaling, "Heatmap"]
+tags: ["single-cell", "Seurat", "Centering", "Scaling", "PCA", "heatmap"]
 categories: ["tutorial"]
 ---
 
