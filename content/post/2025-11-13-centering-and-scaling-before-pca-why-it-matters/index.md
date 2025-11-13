@@ -1,7 +1,7 @@
 ---
 title: "Centering and Scaling Before PCA: Why It Matters"
 author: "Nasim"
-date: "2025-11-12"
+date: "2025-11-13"
 slug: "centering-and-scaling-before-pca-why-it-matters"
 draft: false
 tags: ["single-cell", "Seurat", "Centering", "Scaling", "PCA", "heatmap"]

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.152.2">
+
+
+<title>Centering and Scaling Before PCA: Why It Matters - Bioinformatics Blogs By Nasim Rahmatpour</title>
+<meta property="og:title" content="Centering and Scaling Before PCA: Why It Matters - Bioinformatics Blogs By Nasim Rahmatpour">
+
+
+  <link href='https://nasimbio.github.io/bioinfo-blog/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/bioinfo-blog/css/fonts.css" media="all">
+<link rel="stylesheet" href="/bioinfo-blog/css/main.css" media="all">
+
+<link rel="stylesheet" href="/bioinfo-blog/css/custom.css">
+
+<link rel="stylesheet" href="/bioinfo-blog/css/custom.css">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/bioinfo-blog/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/bioinfo-blog/about/">About</a></li>
+    
+    <li><a href="https://github.com/nasimbio">GitHub</a></li>
+    
+    <li><a href="https://www.linkedin.com/in/nasimrahmatpour/">LinkedIn</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">2 min read</span>
+    
+
+    <h1 class="article-title">Centering and Scaling Before PCA: Why It Matters</h1>
+
+    
+    <span class="article-date">2025-11-13</span>
+    
+
+    <div class="article-content">
+      
+      <p>🧠 Centering and Scaling Before PCA; Why It Matters</p>
+<p>When performing PCA on gene expression data, centering and scaling aren’t just optional, they’re essential to ensure PCA captures true biological variation rather than numerical artifacts. PCA is powerful, but only when the data are centered and scaled correctly.
+Otherwise, it captures the wrong kind of “variance.”</p>
+<p>🎯 Centering</p>
+<p>PCA ideally looks for directions of maximum variance around the mean of each gene.
+But if we don’t center the data, PCA instead measures variance around the origin (0), not around each gene’s mean.</p>
+<p>This subtle difference matters a lot:</p>
+<p>That means housekeeping genes which are highly expressed everywhere even if they barely vary appear to contribute huge variance simply because their mean values are far from zero dominate the first PC, even though they don’t separate cell types.
+The result: the first principal component becomes dominated by highly expressed, low-variance genes, masking real biological structure.</p>
+<p>🧩 High mean ≠ informative variance</p>
+<p>✅ Centering removes mean bias so PCA focuses on true biological variation.</p>
+<p>⚖️ Scaling</p>
+<p>If we skip scaling, genes with large numeric variance (often noisy or highly expressed) overpower the analysis. Z-scoring gives every gene equal influence, so PCA highlights correlated expression patterns not raw magnitude.</p>
+<p>🧩 Scaling removes numeric bias, not biological signal.</p>
+<p>🔬 In Seurat</p>
+<p>1️⃣ FindVariableFeatures() → picks biologically variable genes</p>
+<p>2️⃣ ScaleData() → z-score (center + scale)</p>
+<p>3️⃣ RunPCA() → captures real structure across cells</p>
+<p>🎨 Same reason we z-score heatmaps:</p>
+<p>To compare genes relative to their own mean and variance.</p>
+<p>DoHeatmap() in Seurat already uses scaled data.</p>
+<p>Summary:</p>
+<p>PCA without centering/scaling shows who’s loudest.
+PCA with centering/scaling shows who’s different.</p>
+<p>To learn more, check out this excellent explanation on “chatomics”, YouTube channel. I always learn from him.
+<a href="https://www.youtube.com/watch?v=P7kj0GLTgS4">https://www.youtube.com/watch?v=P7kj0GLTgS4</a></p>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/bioinfo-blog/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+    
+
+    
+  </body>
+</html>
+

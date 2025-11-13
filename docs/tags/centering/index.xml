@@ -6,13 +6,13 @@
     <description>Recent content in Centering on Bioinformatics Blogs By Nasim Rahmatpour</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 12 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 13 Nov 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nasimbio.github.io/bioinfo-blog/tags/centering/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Centering and Scaling Before PCA: Why It Matters</title>
-      <link>https://nasimbio.github.io/bioinfo-blog/2025/11/12/centering-and-scaling-before-pca-why-it-matters/</link>
-      <pubDate>Wed, 12 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://nasimbio.github.io/bioinfo-blog/2025/11/12/centering-and-scaling-before-pca-why-it-matters/</guid>
+      <link>https://nasimbio.github.io/bioinfo-blog/2025/11/13/centering-and-scaling-before-pca-why-it-matters/</link>
+      <pubDate>Thu, 13 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://nasimbio.github.io/bioinfo-blog/2025/11/13/centering-and-scaling-before-pca-why-it-matters/</guid>
       <description>&lt;p&gt;🧠 Centering and Scaling Before PCA; Why It Matters&lt;/p&gt;&#xA;&lt;p&gt;When performing PCA on gene expression data, centering and scaling aren’t just optional, they’re essential to ensure PCA captures true biological variation rather than numerical artifacts. PCA is powerful, but only when the data are centered and scaled correctly.&#xA;Otherwise, it captures the wrong kind of “variance.”&lt;/p&gt;&#xA;&lt;p&gt;🎯 Centering&lt;/p&gt;&#xA;&lt;p&gt;PCA ideally looks for directions of maximum variance around the mean of each gene.&#xA;But if we don’t center the data, PCA instead measures variance around the origin (0), not around each gene’s mean.&lt;/p&gt;</description>
     </item>
   </channel>
