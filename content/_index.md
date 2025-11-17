@@ -2,8 +2,6 @@
 title: "Bioinformatics Blog by Nasim"
 ---
 
-# Bioinformatics Blog by Nasim
-
 ## Welcome 👋
 
 Hi, I’m **Nasim Rahmatpour**, a bioinformatics scientist working on genomics, transcriptomics, single-cell, spatial, and multi-omic data analysis.
