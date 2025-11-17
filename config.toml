@@ -1,0 +1,22 @@
+baseURL = "https://nasimbio.github.io/bioinfo-blog/"
+languageCode = "en-us"
+title = "Bioinformatics Blogs By Nasim"
+publishDir = "docs"
+theme = "hugo-paper"
+
+# Author info shown on homepage
+[params]
+  author = "Nasim Rahmatpour"
+  description = "I write tutorials on genomics, transcriptomics, and data analysis."
+
+# Navigation Menu
+[menu]
+  [[menu.main]]
+    name = "About"
+    url  = "/about/"
+  [[menu.main]]
+    name = "GitHub"
+    url  = "https://github.com/nasimbio"
+  [[menu.main]]
+    name = "LinkedIn"
+    url  = "https://www.linkedin.com/in/nasimrahmatpour/"

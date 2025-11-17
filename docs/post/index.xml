@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Bioinformatics Blogs By Nasim Rahmatpour</title>
+    <title>Posts on Bioinformatics Blogs By Nasim</title>
     <link>https://nasimbio.github.io/bioinfo-blog/post/</link>
-    <description>Recent content in Posts on Bioinformatics Blogs By Nasim Rahmatpour</description>
+    <description>Recent content in Posts on Bioinformatics Blogs By Nasim</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 13 Nov 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nasimbio.github.io/bioinfo-blog/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Centering and Scaling Before PCA in Single Cell RNA-seq; Why It Matters</title>
-      <link>https://nasimbio.github.io/bioinfo-blog/2025/11/13/centering-and-scaling-before-pca-why-it-matters/</link>
+      <link>https://nasimbio.github.io/bioinfo-blog/post/centering-and-scaling-before-pca-why-it-matters/</link>
       <pubDate>Thu, 13 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://nasimbio.github.io/bioinfo-blog/2025/11/13/centering-and-scaling-before-pca-why-it-matters/</guid>
+      <guid>https://nasimbio.github.io/bioinfo-blog/post/centering-and-scaling-before-pca-why-it-matters/</guid>
       <description>&lt;p&gt;🧠 Centering and Scaling Before PCA; Why It Matters&lt;/p&gt;&#xA;&lt;p&gt;When performing PCA on gene expression data, centering and scaling aren’t just optional, they’re essential to ensure PCA captures true biological variation rather than numerical artifacts. PCA is powerful, but only when the data are centered and scaled correctly.&#xA;Otherwise, it captures the wrong kind of “variance.”&lt;/p&gt;&#xA;&lt;p&gt;🎯 Centering&lt;/p&gt;&#xA;&lt;p&gt;PCA ideally looks for directions of maximum variance around the mean of each gene.&#xA;But if we don’t center the data, PCA instead measures variance around the origin (0), not around each gene’s mean.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Single-Cell Data Analysis: Understanding CCA, RPCA, PCA, and MapQuery in Seurat; How They Relate and Differ</title>
-      <link>https://nasimbio.github.io/bioinfo-blog/2025/11/12/single-cell-data-analysis-understanding-cca-rpca-pca-and-mapquery-in-seurat-how-they-relate-and-differ/</link>
+      <link>https://nasimbio.github.io/bioinfo-blog/post/single-cell-data-analysis-understanding-cca-rpca-pca-and-mapquery-in-seurat-how-they-relate-and-differ/</link>
       <pubDate>Wed, 12 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://nasimbio.github.io/bioinfo-blog/2025/11/12/single-cell-data-analysis-understanding-cca-rpca-pca-and-mapquery-in-seurat-how-they-relate-and-differ/</guid>
+      <guid>https://nasimbio.github.io/bioinfo-blog/post/single-cell-data-analysis-understanding-cca-rpca-pca-and-mapquery-in-seurat-how-they-relate-and-differ/</guid>
       <description>&lt;p&gt;🔹 1. CCA for Integration (Batch Effect Removal)&lt;/p&gt;&#xA;&lt;p&gt;Canonical Correlation Analysis (CCA) identifies correlated gene expression patterns between datasets, finding the directions that maximize covariation across them.&#xA;Seurat uses these correlations to define anchors or pairs of biologically similar cells across datasets.&#xA;These anchors then drive the creation of a new integrated assay, which contains batch-corrected expression values suitable for joint analysis (clustering, visualization, and DGE).&lt;/p&gt;&#xA;&lt;p&gt;🔹 2. CCA and PCA for Label Transfer&lt;/p&gt;</description>
     </item>
     <item>
       <title>Multi-Omic Data Integration Challenges &amp; Strategies</title>
-      <link>https://nasimbio.github.io/bioinfo-blog/2025/11/06/multi-omic-data-integration-challenges-strategies/</link>
+      <link>https://nasimbio.github.io/bioinfo-blog/post/2025-11-06-multi-omic-data-integration-challenges-strategies/</link>
       <pubDate>Thu, 06 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://nasimbio.github.io/bioinfo-blog/2025/11/06/multi-omic-data-integration-challenges-strategies/</guid>
+      <guid>https://nasimbio.github.io/bioinfo-blog/post/2025-11-06-multi-omic-data-integration-challenges-strategies/</guid>
       <description>&lt;p&gt;Integrating multi-omic datasets is powerful but far from simple. Each omic layer comes with its own preprocessing methods, normalization and scaling requirements, and sources of noise or batch effects.&lt;/p&gt;&#xA;&lt;p&gt;Adding to the complexity, signals between omic layers don’t always align, for example, highly expressed genes may not necessarily correspond to more accessible chromatin regions in ATAC-seq data.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;-define-your-biological-question&#34;&gt;🧠 Define Your Biological Question&lt;/h2&gt;&#xA;&lt;p&gt;Before diving into integration, it’s crucial to define your biological question:&lt;/p&gt;</description>
     </item>
   </channel>

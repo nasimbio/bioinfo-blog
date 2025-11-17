@@ -3,7 +3,7 @@ languageCode: "en-us"
 title: "Bioinformatics Blogs By Nasim Rahmatpour"
 publishDir: "docs"
 
-theme: hugo-lithium
+theme: "hugo-paper"
 ignoreFiles:
   - \.Rmd$
   - \.Rmarkdown$
