@@ -5,7 +5,7 @@ publishDir = "docs"
 theme = "hugo-paper"
 
 [params]
-  name = "Bioinformatics Blog by Nasim"
+  name = "Nasim Rahmatpour"
 
   bio = """Welcome 👋
 
@@ -26,10 +26,3 @@ Below you’ll find my posts and notes as I explore these areas.
     name = "About"
     url  = "/about/"
 
-  [[menu.main]]
-    name = "GitHub"
-    url  = "https://github.com/nasimbio"
-
-  [[menu.main]]
-    name = "LinkedIn"
-    url  = "https://www.linkedin.com/in/nasimrahmatpour/"
