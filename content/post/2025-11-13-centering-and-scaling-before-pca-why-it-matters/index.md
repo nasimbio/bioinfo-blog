@@ -1,5 +1,5 @@
 ---
-title: "Centering and Scaling Before PCA: Why It Matters"
+title: "Centering and Scaling Before PCA in Single Cell RNA-seq; Why It Matters"
 author: "Nasim"
 date: "2025-11-13"
 slug: "centering-and-scaling-before-pca-why-it-matters"
@@ -53,5 +53,11 @@ Summary:
 PCA without centering/scaling shows who’s loudest.
 PCA with centering/scaling shows who’s different.
 
+
+🧬 Bulk RNA-seq vs. Single-cell RNA-seq: Why Scaling Decisions Differ
+
+Whether you scale before PCA depends on type of data. In bulk RNA each sample already represent an average over many cells and variance across samples reflect biological conditions. So, for bulk RNA you usually don’t scale before PCA since absolute variance reflects biological meaning and it corresponds to PCA based on covariance. For single cell, you should scale before PCA otherwise PCA will be driven by highly expressed genes rather than meaningful biological expression. This corresponds to PCA based on correlation matrix. 
+
 To learn more, check out this excellent explanation on “chatomics”, YouTube channel. I always learn from him.
+
 https://www.youtube.com/watch?v=P7kj0GLTgS4

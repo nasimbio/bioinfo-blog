@@ -6,8 +6,8 @@
 <meta name="generator" content="Hugo 0.152.2">
 
 
-<title>Centering and Scaling Before PCA: Why It Matters - Bioinformatics Blogs By Nasim Rahmatpour</title>
-<meta property="og:title" content="Centering and Scaling Before PCA: Why It Matters - Bioinformatics Blogs By Nasim Rahmatpour">
+<title>Centering and Scaling Before PCA in Single Cell RNA-seq; Why It Matters - Bioinformatics Blogs By Nasim Rahmatpour</title>
+<meta property="og:title" content="Centering and Scaling Before PCA in Single Cell RNA-seq; Why It Matters - Bioinformatics Blogs By Nasim Rahmatpour">
 
 
   <link href='https://nasimbio.github.io/bioinfo-blog/favicon.ico' rel='icon' type='image/x-icon'/>
@@ -64,7 +64,7 @@
     <span class="article-duration">2 min read</span>
     
 
-    <h1 class="article-title">Centering and Scaling Before PCA: Why It Matters</h1>
+    <h1 class="article-title">Centering and Scaling Before PCA in Single Cell RNA-seq; Why It Matters</h1>
 
     
     <span class="article-date">2025-11-13</span>
@@ -96,8 +96,10 @@ The result: the first principal component becomes dominated by highly expressed,
 <p>Summary:</p>
 <p>PCA without centering/scaling shows who’s loudest.
 PCA with centering/scaling shows who’s different.</p>
-<p>To learn more, check out this excellent explanation on “chatomics”, YouTube channel. I always learn from him.
-<a href="https://www.youtube.com/watch?v=P7kj0GLTgS4">https://www.youtube.com/watch?v=P7kj0GLTgS4</a></p>
+<p>🧬 Bulk RNA-seq vs. Single-cell RNA-seq: Why Scaling Decisions Differ</p>
+<p>Whether you scale before PCA depends on type of data. In bulk RNA each sample already represent an average over many cells and variance across samples reflect biological conditions. So, for bulk RNA you usually don’t scale before PCA since absolute variance reflects biological meaning and it corresponds to PCA based on covariance. For single cell, you should scale before PCA otherwise PCA will be driven by highly expressed genes rather than meaningful biological expression. This corresponds to PCA based on correlation matrix.</p>
+<p>To learn more, check out this excellent explanation on “chatomics”, YouTube channel. I always learn from him.</p>
+<p><a href="https://www.youtube.com/watch?v=P7kj0GLTgS4">https://www.youtube.com/watch?v=P7kj0GLTgS4</a></p>
 
     </div>
   </article>

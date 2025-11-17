@@ -9,7 +9,7 @@
     <lastBuildDate>Thu, 13 Nov 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nasimbio.github.io/bioinfo-blog/tags/scaling/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Centering and Scaling Before PCA: Why It Matters</title>
+      <title>Centering and Scaling Before PCA in Single Cell RNA-seq; Why It Matters</title>
       <link>https://nasimbio.github.io/bioinfo-blog/2025/11/13/centering-and-scaling-before-pca-why-it-matters/</link>
       <pubDate>Thu, 13 Nov 2025 00:00:00 +0000</pubDate>
       <guid>https://nasimbio.github.io/bioinfo-blog/2025/11/13/centering-and-scaling-before-pca-why-it-matters/</guid>
