@@ -20,9 +20,7 @@ Below you’ll find my posts and notes as I explore these areas.
 
   github = "nasimbio"
   linkedin = "nasimrahmatpour"
+  email    = "nasimrahmatpour1@gmail.com"
 
-[menu]
-  [[menu.main]]
-    name = "About"
-    url  = "/about/"
+
 
