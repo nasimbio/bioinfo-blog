@@ -1,3 +1,13 @@
+/* Add circular logo before the site title in the top bar */
+header a:first-child::before {
+  content: url("/logo.jpg");   /* path is from /static */
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  margin-right: 8px;
+  vertical-align: middle;
+  border-radius: 50%;
+}
 /* shrink homepage title and keep it on one line */
 body.home h1.title,
 header .title,

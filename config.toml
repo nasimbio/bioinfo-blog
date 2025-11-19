@@ -18,11 +18,11 @@ Writing here helps me focus, organize my thoughts, and remember key concepts bet
 Below you’ll find my posts and notes as I explore these areas.
 
 """
-  logo = "logo.jpg"
 
   github = "nasimbio"
   linkedin = "nasimrahmatpour"
-  email    = "nasimrahmatpour1@gmail.com"
+  customCSS = ["css/custom.css"]
+  
 
 
 
