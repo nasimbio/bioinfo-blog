@@ -5,6 +5,7 @@ publishDir = "docs"
 theme = "hugo-paper"
 
 [params]
+  avatar = "/logo.jpg"
   name = "About me"
 
   bio = """Welcome 👋
@@ -21,7 +22,7 @@ Below you’ll find my posts and notes as I explore these areas.
 
   github = "nasimbio"
   linkedin = "nasimrahmatpour"
-  customCSS = ["css/custom.css"]
+
   
 
 
