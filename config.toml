@@ -5,7 +5,7 @@ publishDir = "docs"
 theme = "hugo-paper"
 
 [params]
-  avatar = "/css/logo.png"
+  avatar = "/logo.png"
   name = "About me"
 
   bio = """Welcome 👋
