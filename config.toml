@@ -5,10 +5,13 @@ publishDir = "docs"
 theme = "hugo-paper"
 
 [params]
-  avatar = "/logo.png"
-  name = "About me"
+  color = "linen"   # optional, keeps your current look
 
-  bio = """Welcome 👋
+  # 👇 THIS is what the theme actually uses for the About block
+  [params.profile]
+    avatar = "/logo.png"   # points to static/logo.png
+    name   = "About me"
+    bio = """Welcome 👋
 
 Hi, I’m Nasim Rahmatpour, a bioinformatics scientist working on genomics, transcriptomics, single-cell, spatial, and multi-omic data analysis.
 
