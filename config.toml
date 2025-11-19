@@ -5,7 +5,7 @@ publishDir = "docs"
 theme = "hugo-paper"
 
 [params]
-  name = "Nasim Rahmatpour"
+  name = "About me"
 
   bio = """Welcome 👋
 
