@@ -135,8 +135,7 @@ but **NOT valid** for differential expression or single-cell normalization.
 
 ## Note
 
-TPM is sometimes used in **non-UMI** single-cell protocols such as Smart-seq2/3, where gene length matters.  
-However, TPM is **not appropriate** for UMI-based single-cell technologies.
+TPM is sometimes used in **non-UMI** single-cell protocols such as Smart-seq2/3, where gene length matters. However, TPM is **not appropriate** for UMI-based single-cell technologies.
 
 ---
 
