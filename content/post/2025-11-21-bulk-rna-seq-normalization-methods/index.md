@@ -51,6 +51,7 @@ Below are the most common normalization methods, their intended applications, an
 ## 4. TPM (Transcripts Per Million)
 
 • Also normalizes for gene length and sequencing depth, but the order of operation is reversed compared to RPKM/FPKM. (It first normalizes for gene length then sequencing depth but FPKM/RPKM first normalize for sequencing depth then gene length) .
+
 • TPM forces the sum of normalized expression to be identical for all samples.  
 • This allows you to interpret TPM as the proportion of transcripts mapping to each gene.  
 • Good for comparing expression of the same gene across samples.  
