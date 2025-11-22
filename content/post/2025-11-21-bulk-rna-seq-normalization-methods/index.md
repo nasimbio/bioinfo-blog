@@ -4,7 +4,7 @@ author: "Nasim Rahmatpour"
 date: "2025-11-21"
 slug: "bulk-rnaseq-normalization-methods"
 categories: ["Bulk RNA-seq"]
-tags: ["Normalization", "RNA-seq", "Bioinformatics"]
+tags: ["Normalization", "RNA-seq", "Bioinformatics", "single-cell", "bulk-RNA"]
 draft: false
 ---
 
