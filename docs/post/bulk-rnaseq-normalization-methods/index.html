@@ -250,19 +250,19 @@ Below are the most common normalization methods, their intended applications, an
 <p>• one sample has many highly expressed genes (e.g., hemoglobin, ribosomes),<br>
 which artificially suppresses the apparent expression of other genes.</p>
 <p>Tools such as <strong>DESeq2</strong>, <strong>edgeR</strong>, and <strong>limma/voom</strong> solve this by:</p>
-<p>• estimating size factors
-• adjusting for compositional bias<br>
-• modeling count data with an appropriate distribution and providing valid DGE results.</p>
+<p>• estimating size factors</p>
+<p>• adjusting for compositional bias</p>
+<p>• modeling count data with an appropriate distribution and providing valid DGE results.</p>
 <p>(I’ll write a separate post explaining DESeq2 and edgeR.)</p>
 <hr>
 <h2 id="why-these-methods-are-not-appropriate-for-single-cell-rna-seq">Why these methods are not appropriate for single-cell RNA-seq</h2>
 <p>These normalization methods correct only for sequencing depth and sometimes gene length. But single-cell RNA-seq data behave very differently. For example, TPM forces every cell to have the same total expression which is incorrect for single-cell biology.</p>
 <h3 id="-in-bulk-rna-seq">✔️ In bulk RNA-seq</h3>
 <p>The total RNA content is averaged across <strong>millions of cells</strong>, so:</p>
-<p>• Biological differences (cell size, cycle) wash out.<br>
-• True RNA amount per sample is relatively stable.<br>
-• Extraction efficiency is similar across samples.<br>
-• Most variation comes from sequencing depth.</p>
+<p>• Biological differences (cell size, cycle) wash out.</p>
+<p>• True RNA amount per sample is relatively stable.</p>
+<p>• Extraction efficiency is similar across samples.</p>
+<p>• Most variation comes from sequencing depth.</p>
 <p>So, in bulk RNA-seq, <strong>library size ≈ sequencing depth</strong>.</p>
 <h3 id="-in-single-cell-rna-seq">❌ In single-cell RNA-seq</h3>
 <p>Variation in library size comes from:</p>

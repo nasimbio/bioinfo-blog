@@ -71,7 +71,9 @@ Compositional bias occurs when:
 Tools such as **DESeq2**, **edgeR**, and **limma/voom** solve this by:
 
 • estimating size factors 
+
 • adjusting for compositional bias  
+
 • modeling count data with an appropriate distribution and providing valid DGE results.
 
 (I’ll write a separate post explaining DESeq2 and edgeR.)
@@ -86,9 +88,12 @@ These normalization methods correct only for sequencing depth and sometimes gene
 
 The total RNA content is averaged across **millions of cells**, so:
 
-• Biological differences (cell size, cycle) wash out.  
+• Biological differences (cell size, cycle) wash out. 
+
 • True RNA amount per sample is relatively stable.  
+
 • Extraction efficiency is similar across samples.  
+
 • Most variation comes from sequencing depth.  
 
 So, in bulk RNA-seq, **library size ≈ sequencing depth**.
