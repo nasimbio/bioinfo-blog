@@ -112,9 +112,7 @@ Variation in library size comes from:
 3. mRNA loss during lysis  
 4. Sequencing depth differences  
 
-Because of this, the observed library size in a single cell is **not** a reliable measure of true RNA content.
-
-TPM (and similar methods) wrongly force every cell to have the same total expression, which:
+Because of this, the observed library size in a single cell is **not** a reliable measure of true RNA content. TPM (and similar methods) wrongly force every cell to have the same total expression, which:
 
 • removes true biological differences,  
 • amplifies technical noise,  
