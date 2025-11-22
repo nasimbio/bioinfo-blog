@@ -1,0 +1,342 @@
+<!doctype html>
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg:#faf8f1"
+  lang="en-us"
+  dir="ltr"
+><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Bulk RNA-seq Normalization Methods - Bioinformatics Blogs By Nasim</title>
+
+  
+  <meta name="theme-color" />
+
+  <meta name="description" content="Normalization is essential in differential gene expression (DGE) analysis and general data exploration. Raw read counts do not directly reflect true expression levels because they depend on:
+• sequencing depth
+• gene length
+• RNA composition of each sample
+Without proper normalization, DGE can produce biased or misleading results.
+Below are the most common normalization methods, their intended applications, and whether they are appropriate for DGE.
+
+1. CPM (Counts Per Million)
+• Adjusts only for sequencing depth.
+• Appropriate for comparing the same gene across different samples.
+• Not appropriate for comparing different genes within a sample (does not correct for gene length).
+• ❌ Not suitable for DGE analysis (does not correct compositional bias)." />
+  <meta name="author" content="Nasim Rahmatpour" /><link rel="preload stylesheet" as="style" href="https://nasimbio.github.io/bioinfo-blog/main.min.css" />
+
+  
+  <link rel="preload" as="image" href="https://nasimbio.github.io/bioinfo-blog/theme.png" />
+
+  
+
+  <link rel="preload" as="image" href="https://nasimbio.github.io/bioinfo-blog/github.svg" /><link rel="preload" as="image" href="https://nasimbio.github.io/bioinfo-blog/linkedin.svg" />
+
+  <script
+    defer
+    src="https://nasimbio.github.io/bioinfo-blog/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+
+  
+  <link
+    rel="icon"
+    href="https://nasimbio.github.io/bioinfo-blog/favicon.ico"
+  />
+  <link
+    rel="apple-touch-icon"
+    href="https://nasimbio.github.io/bioinfo-blog/apple-touch-icon.png"
+  />
+
+  <meta name="generator" content="Hugo 0.152.2">
+  <meta itemprop="name" content="Bulk RNA-seq Normalization Methods">
+  <meta itemprop="description" content="Normalization is essential in differential gene expression (DGE) analysis and general data exploration. Raw read counts do not directly reflect true expression levels because they depend on:
+• sequencing depth
+• gene length
+• RNA composition of each sample
+Without proper normalization, DGE can produce biased or misleading results.
+Below are the most common normalization methods, their intended applications, and whether they are appropriate for DGE.
+1. CPM (Counts Per Million) • Adjusts only for sequencing depth.
+• Appropriate for comparing the same gene across different samples.
+• Not appropriate for comparing different genes within a sample (does not correct for gene length).
+• ❌ Not suitable for DGE analysis (does not correct compositional bias).">
+  <meta itemprop="datePublished" content="2025-11-21T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-11-21T00:00:00+00:00">
+  <meta itemprop="wordCount" content="660">
+  <meta itemprop="keywords" content="Normalization,RNA-Seq,Bioinformatics"><meta property="og:url" content="https://nasimbio.github.io/bioinfo-blog/post/bulk-rnaseq-normalization-methods/">
+  <meta property="og:site_name" content="Bioinformatics Blogs By Nasim">
+  <meta property="og:title" content="Bulk RNA-seq Normalization Methods">
+  <meta property="og:description" content="Normalization is essential in differential gene expression (DGE) analysis and general data exploration. Raw read counts do not directly reflect true expression levels because they depend on:
+• sequencing depth
+• gene length
+• RNA composition of each sample
+Without proper normalization, DGE can produce biased or misleading results.
+Below are the most common normalization methods, their intended applications, and whether they are appropriate for DGE.
+1. CPM (Counts Per Million) • Adjusts only for sequencing depth.
+• Appropriate for comparing the same gene across different samples.
+• Not appropriate for comparing different genes within a sample (does not correct for gene length).
+• ❌ Not suitable for DGE analysis (does not correct compositional bias).">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-11-21T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-11-21T00:00:00+00:00">
+    <meta property="article:tag" content="Normalization">
+    <meta property="article:tag" content="RNA-Seq">
+    <meta property="article:tag" content="Bioinformatics">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Bulk RNA-seq Normalization Methods">
+  <meta name="twitter:description" content="Normalization is essential in differential gene expression (DGE) analysis and general data exploration. Raw read counts do not directly reflect true expression levels because they depend on:
+• sequencing depth
+• gene length
+• RNA composition of each sample
+Without proper normalization, DGE can produce biased or misleading results.
+Below are the most common normalization methods, their intended applications, and whether they are appropriate for DGE.
+1. CPM (Counts Per Million) • Adjusts only for sequencing depth.
+• Appropriate for comparing the same gene across different samples.
+• Not appropriate for comparing different genes within a sample (does not correct for gene length).
+• ❌ Not suitable for DGE analysis (does not correct compositional bias).">
+
+  <link rel="canonical" href="https://nasimbio.github.io/bioinfo-blog/post/bulk-rnaseq-normalization-methods/" />
+</head>
+<body
+    class="bg-(--bg) text-black antialiased duration-200 ease-out [-webkit-tap-highlight-color:transparent] dark:text-white"
+  ><header
+  class="mx-auto flex h-[4.5rem] max-w-(--w) px-8 whitespace-nowrap lg:justify-center"
+>
+  <div class="relative z-50 flex items-center ltr:mr-auto rtl:ml-auto">
+    <a
+      class="-translate-y-[1px] text-2xl font-medium"
+      href="https://nasimbio.github.io/bioinfo-blog/"
+      >Bioinformatics Blogs By Nasim</a
+    >
+    <div
+      class="btn-dark text-[0px] ltr:ml-4 rtl:mr-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden ltr:-mr-8 rtl:-ml-8"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full flex-col justify-center bg-(--bg) pb-16 duration-200 select-none lg:static lg:h-auto lg:flex-row lg:bg-transparent! lg:pb-0 lg:transition-none"
+  ><nav
+      class="mt-12 flex justify-center space-x-10 lg:mt-0 lg:items-center ltr:lg:ml-14 rtl:space-x-reverse rtl:lg:mr-14 dark:invert"
+    >
+      <a
+        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/nasimbio"
+        target="_blank"
+        rel="me"
+      >github</a>
+      <a
+        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./linkedin.svg)"
+        href="https://linkedin.com/in/nasimrahmatpour"
+        target="_blank"
+        rel="me"
+      >linkedin</a>
+    </nav>
+  </div>
+</header>
+<main
+      class="prose prose-neutral dark:prose-invert relative mx-auto min-h-[calc(100vh-9rem)] max-w-(--w) px-8 pt-14 pb-16"
+    ><article>
+  <header class="mb-14">
+    <h1 class="my-0! pb-2.5">Bulk RNA-seq Normalization Methods</h1><div class="text-xs antialiased opacity-60"><time>Nov 21, 2025</time><span class="mx-1">&middot;</span>
+      <span>Nasim Rahmatpour</span></div></header>
+
+  <section><p>Normalization is essential in differential gene expression (DGE) analysis and general data exploration. Raw read counts do not directly reflect true expression levels because they depend on:</p>
+<p>• sequencing depth<br>
+• gene length<br>
+• RNA composition of each sample</p>
+<p>Without proper normalization, DGE can produce biased or misleading results.</p>
+<p>Below are the most common normalization methods, their intended applications, and whether they are appropriate for DGE.</p>
+<hr>
+<h2 id="1-cpm-counts-per-million">1. CPM (Counts Per Million)</h2>
+<p>• Adjusts only for sequencing depth.<br>
+• Appropriate for comparing the same gene across different samples.<br>
+• Not appropriate for comparing different genes within a sample (does not correct for gene length).<br>
+• ❌ Not suitable for DGE analysis (does not correct compositional bias).</p>
+<hr>
+<h2 id="2-rpkm-reads-per-kilobase-per-million-reads">2. RPKM (Reads Per Kilobase per Million Reads)</h2>
+<p>• Normalizes for sequencing depth and gene length.<br>
+• Designed for single-end reads.<br>
+• Useful mainly for within-sample comparison of genes.<br>
+• ❌ Not ideal for comparing across samples (library totals differ).<br>
+• ❌ Not suitable for DGE.</p>
+<hr>
+<h2 id="3-fpkm-fragments-per-kilobase-per-million">3. FPKM (Fragments Per Kilobase per Million)</h2>
+<p>• Same as RPKM but for paired-end reads.<br>
+• Corrects for sequencing depth + gene length.<br>
+• Historically popular, now rarely used.<br>
+• ❌ Not appropriate for DGE.</p>
+<hr>
+<h2 id="4-tpm-transcripts-per-million">4. TPM (Transcripts Per Million)</h2>
+<p>• Also normalizes for gene length and sequencing depth, but the order is reversed compared to RPKM/FPKM.<br>
+• TPM forces the sum of normalized expression to be identical for all samples (1,000,000).<br>
+• This allows you to interpret TPM as the proportion of transcripts mapping to each gene.<br>
+• Good for comparing expression of the same gene across samples.<br>
+• Good for comparing different genes within the same sample.<br>
+• ❌ Not suitable for DGE because it does not correct compositional bias.</p>
+<hr>
+<h2 id="why-none-of-these-cpm-tpm-rpkm-fpkm-should-be-used-for-dge">Why NONE of these (CPM, TPM, RPKM, FPKM) should be used for DGE</h2>
+<p>These methods correct for sequencing depth and (sometimes) gene length, but they do <strong>not</strong> correct compositional bias.</p>
+<p>Compositional bias occurs when:</p>
+<p>• one sample has many highly expressed genes (e.g., hemoglobin, ribosomes),<br>
+which artificially suppresses the apparent expression of other genes.</p>
+<p>Tools such as <strong>DESeq2</strong>, <strong>edgeR</strong>, and <strong>limma/voom</strong> solve this by:</p>
+<p>• estimating size factors,<br>
+• adjusting for compositional bias,<br>
+• modeling count data with an appropriate distribution,<br>
+• providing valid DGE results.</p>
+<p>(I’ll write a separate post explaining DESeq2 and edgeR.)</p>
+<hr>
+<h2 id="why-these-methods-are-not-appropriate-for-single-cell-rna-seq">Why these methods are not appropriate for single-cell RNA-seq</h2>
+<p>These normalization methods correct only for sequencing depth and sometimes gene length.<br>
+But single-cell RNA-seq data behave very differently. For example, TPM forces every cell to have the same total expression — which is incorrect for single-cell biology.</p>
+<h3 id="-in-bulk-rna-seq">✔️ In bulk RNA-seq</h3>
+<p>The total RNA content is averaged across <strong>millions of cells</strong>, so:</p>
+<p>• Biological differences (cell size, cycle) wash out.<br>
+• True RNA amount per sample is relatively stable.<br>
+• Extraction efficiency is similar across samples.<br>
+• Most variation comes from sequencing depth.</p>
+<p>So, in bulk RNA-seq, <strong>library size ≈ sequencing depth</strong>.</p>
+<h3 id="-in-single-cell-rna-seq">❌ In single-cell RNA-seq</h3>
+<p>Variation in library size comes from:</p>
+<p><strong>Real biological differences:</strong></p>
+<ol>
+<li>Cell type</li>
+<li>Cell size</li>
+<li>Cell cycle phase</li>
+<li>Activation state</li>
+<li>Metabolic activity</li>
+</ol>
+<p><strong>Technical noise:</strong></p>
+<ol>
+<li>Capture efficiency (5–20%, varies per cell)</li>
+<li>Dropouts and zero inflation</li>
+<li>mRNA loss during lysis</li>
+<li>Sequencing depth differences</li>
+</ol>
+<p>Because of this, the observed library size in a single cell is <strong>not</strong> a reliable measure of true RNA content.</p>
+<p>TPM (and similar methods) wrongly force every cell to have the same total expression, which:</p>
+<p>• removes true biological differences,<br>
+• amplifies technical noise,<br>
+• distorts downstream analyses (clustering, trajectories, DE).</p>
+<hr>
+<h2 id="summary">Summary</h2>
+<p>Bulk and single-cell data behave very differently:</p>
+<p>• <strong>Bulk:</strong> library size ≈ sequencing depth → depth-based normalization works.<br>
+• <strong>Single-cell:</strong> library size = biology + noise + capture efficiency + sequencing depth → depth-based normalization fails.</p>
+<p>Thus, CPM/TPM/RPKM/FPKM are useful <strong>abundance metrics</strong>,<br>
+but <strong>NOT valid</strong> for differential expression or single-cell normalization.</p>
+<hr>
+<h2 id="note">Note</h2>
+<p>TPM is sometimes used in <strong>non-UMI</strong> single-cell protocols such as Smart-seq2/3, where gene length matters.<br>
+However, TPM is <strong>not appropriate</strong> for UMI-based single-cell technologies.</p>
+<hr>
+<p>🔍 For better visualization examples, see this link:<br>
+<em>(<a href="https://hbctraining.github.io/DGE_workshop/lessons/02_DGE_count_normalization.html">https://hbctraining.github.io/DGE_workshop/lessons/02_DGE_count_normalization.html</a>)</em></p>
+</section>
+
+  <footer class="mt-12 flex flex-wrap"><a
+      class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://nasimbio.github.io/bioinfo-blog/tags/normalization"
+      >Normalization</a
+    ><a
+      class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://nasimbio.github.io/bioinfo-blog/tags/rna-seq"
+      >RNA-seq</a
+    ><a
+      class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://nasimbio.github.io/bioinfo-blog/tags/bioinformatics"
+      >Bioinformatics</a
+    ></footer><nav
+    class="mt-24 flex overflow-hidden rounded-xl bg-black/[3%] text-lg leading-[1.2]! *:flex *:w-1/2 *:items-center *:p-5 *:font-medium *:no-underline dark:bg-white/[8%] [&>*:hover]:bg-black/[2%] dark:[&>*:hover]:bg-white/[3%]"
+  ><a
+      class="justify-end pl-3 ltr:ml-auto rtl:mr-auto"
+      href="https://nasimbio.github.io/bioinfo-blog/post/centering-and-scaling-before-pca-why-it-matters/"
+      ><span>Centering and Scaling Before PCA in Single Cell RNA-seq; Why It Matters</span><span class="ltr:ml-1.5 rtl:mr-1.5">→</span></a
+    ></nav></article></main><footer
+  class="mx-auto flex h-[4.5rem] max-w-(--w) items-center px-8 text-xs tracking-wider uppercase opacity-60"
+>
+  <div class="mr-auto">&copy;2025
+    <a class="link" href="https://nasimbio.github.io/bioinfo-blog/">Bioinformatics Blogs By Nasim</a></div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >powered by hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >hugo-paper</a
+  >
+</footer>
+</body>
+</html>

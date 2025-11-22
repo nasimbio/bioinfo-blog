@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Normalization on Bioinformatics Blogs By Nasim</title>
+    <link>https://nasimbio.github.io/bioinfo-blog/tags/normalization/</link>
+    <description>Recent content in Normalization on Bioinformatics Blogs By Nasim</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 21 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://nasimbio.github.io/bioinfo-blog/tags/normalization/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bulk RNA-seq Normalization Methods</title>
+      <link>https://nasimbio.github.io/bioinfo-blog/post/bulk-rnaseq-normalization-methods/</link>
+      <pubDate>Fri, 21 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://nasimbio.github.io/bioinfo-blog/post/bulk-rnaseq-normalization-methods/</guid>
+      <description>&lt;p&gt;Normalization is essential in differential gene expression (DGE) analysis and general data exploration. Raw read counts do not directly reflect true expression levels because they depend on:&lt;/p&gt;&#xA;&lt;p&gt;• sequencing depth&lt;br&gt;&#xA;• gene length&lt;br&gt;&#xA;• RNA composition of each sample&lt;/p&gt;&#xA;&lt;p&gt;Without proper normalization, DGE can produce biased or misleading results.&lt;/p&gt;&#xA;&lt;p&gt;Below are the most common normalization methods, their intended applications, and whether they are appropriate for DGE.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;1-cpm-counts-per-million&#34;&gt;1. CPM (Counts Per Million)&lt;/h2&gt;&#xA;&lt;p&gt;• Adjusts only for sequencing depth.&lt;br&gt;&#xA;• Appropriate for comparing the same gene across different samples.&lt;br&gt;&#xA;• Not appropriate for comparing different genes within a sample (does not correct for gene length).&lt;br&gt;&#xA;• ❌ Not suitable for DGE analysis (does not correct compositional bias).&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -6,8 +6,29 @@
     <description>Recent content in Tags on Bioinformatics Blogs By Nasim</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 13 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 21 Nov 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nasimbio.github.io/bioinfo-blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bioinformatics</title>
+      <link>https://nasimbio.github.io/bioinfo-blog/tags/bioinformatics/</link>
+      <pubDate>Fri, 21 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://nasimbio.github.io/bioinfo-blog/tags/bioinformatics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Normalization</title>
+      <link>https://nasimbio.github.io/bioinfo-blog/tags/normalization/</link>
+      <pubDate>Fri, 21 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://nasimbio.github.io/bioinfo-blog/tags/normalization/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>RNA-Seq</title>
+      <link>https://nasimbio.github.io/bioinfo-blog/tags/rna-seq/</link>
+      <pubDate>Fri, 21 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://nasimbio.github.io/bioinfo-blog/tags/rna-seq/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Centering</title>
       <link>https://nasimbio.github.io/bioinfo-blog/tags/centering/</link>
