@@ -50,7 +50,7 @@ Below are the most common normalization methods, their intended applications, an
 
 ## 4. TPM (Transcripts Per Million)
 
-• Also normalizes for gene length and sequencing depth, but the order is reversed compared to RPKM/FPKM.  
+• Also normalizes for gene length and sequencing depth, but the order of operation is reversed compared to RPKM/FPKM. (It first normalizes for gene length then sequencing depth but FPKM/RPKM first normalize for sequencing depth then gene length) .
 • TPM forces the sum of normalized expression to be identical for all samples.  
 • This allows you to interpret TPM as the proportion of transcripts mapping to each gene.  
 • Good for comparing expression of the same gene across samples.  
@@ -116,10 +116,7 @@ Variation in library size comes from:
 4. Sequencing depth differences  
 
 Because of this, the observed library size in a single cell is **not** a reliable measure of true RNA content. TPM (and similar methods) wrongly force every cell to have the same total expression, which:
-
-• removes true biological differences. 
-• amplifies technical noise. 
-• distorts downstream analyses (clustering, trajectories, DE).
+removes true biological differences, amplifies technical noise and distorts downstream analyses (clustering, trajectories, DE).
 
 ---
 

@@ -76,7 +76,7 @@ Below are the most common normalization methods, their intended applications, an
 • ❌ Not suitable for DGE analysis (does not correct compositional bias).">
   <meta itemprop="datePublished" content="2025-11-21T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-11-21T00:00:00+00:00">
-  <meta itemprop="wordCount" content="660">
+  <meta itemprop="wordCount" content="680">
   <meta itemprop="keywords" content="Normalization,RNA-Seq,Bioinformatics"><meta property="og:url" content="https://nasimbio.github.io/bioinfo-blog/post/bulk-rnaseq-normalization-methods/">
   <meta property="og:site_name" content="Bioinformatics Blogs By Nasim">
   <meta property="og:title" content="Bulk RNA-seq Normalization Methods">
@@ -237,7 +237,7 @@ Below are the most common normalization methods, their intended applications, an
 • ❌ Not appropriate for DGE.</p>
 <hr>
 <h2 id="4-tpm-transcripts-per-million">4. TPM (Transcripts Per Million)</h2>
-<p>• Also normalizes for gene length and sequencing depth, but the order is reversed compared to RPKM/FPKM.<br>
+<p>• Also normalizes for gene length and sequencing depth, but the order of operation is reversed compared to RPKM/FPKM. (It first normalizes for gene length then sequencing depth but FPKM/RPKM first normalize for sequencing depth then gene length) .
 • TPM forces the sum of normalized expression to be identical for all samples.<br>
 • This allows you to interpret TPM as the proportion of transcripts mapping to each gene.<br>
 • Good for comparing expression of the same gene across samples.<br>
@@ -281,10 +281,8 @@ which artificially suppresses the apparent expression of other genes.</p>
 <li>mRNA loss during lysis</li>
 <li>Sequencing depth differences</li>
 </ol>
-<p>Because of this, the observed library size in a single cell is <strong>not</strong> a reliable measure of true RNA content. TPM (and similar methods) wrongly force every cell to have the same total expression, which:</p>
-<p>• removes true biological differences.
-• amplifies technical noise.
-• distorts downstream analyses (clustering, trajectories, DE).</p>
+<p>Because of this, the observed library size in a single cell is <strong>not</strong> a reliable measure of true RNA content. TPM (and similar methods) wrongly force every cell to have the same total expression, which:
+removes true biological differences, amplifies technical noise and distorts downstream analyses (clustering, trajectories, DE).</p>
 <hr>
 <h2 id="summary">Summary</h2>
 <p>Bulk and single-cell data behave very differently:</p>
