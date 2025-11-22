@@ -23,8 +23,8 @@ Below are the most common normalization methods, their intended applications, an
 ## 1. CPM (Counts Per Million)
 
 • Adjusts only for sequencing depth.  
-• Appropriate for comparing the same gene across different samples.  
-• Not appropriate for comparing different genes within a sample (does not correct for gene length).  
+• Appropriate for comparing the same gene expression across different samples.  
+• Not appropriate for comparing different genes expression within a sample (does not correct for gene length).  
 • ❌ Not suitable for DGE analysis (does not correct compositional bias).
 
 ---
@@ -51,7 +51,7 @@ Below are the most common normalization methods, their intended applications, an
 ## 4. TPM (Transcripts Per Million)
 
 • Also normalizes for gene length and sequencing depth, but the order is reversed compared to RPKM/FPKM.  
-• TPM forces the sum of normalized expression to be identical for all samples (1,000,000).  
+• TPM forces the sum of normalized expression to be identical for all samples.  
 • This allows you to interpret TPM as the proportion of transcripts mapping to each gene.  
 • Good for comparing expression of the same gene across samples.  
 • Good for comparing different genes within the same sample.  
@@ -70,10 +70,9 @@ Compositional bias occurs when:
 
 Tools such as **DESeq2**, **edgeR**, and **limma/voom** solve this by:
 
-• estimating size factors,  
-• adjusting for compositional bias,  
-• modeling count data with an appropriate distribution,  
-• providing valid DGE results.
+• estimating size factors 
+• adjusting for compositional bias  
+• modeling count data with an appropriate distribution and providing valid DGE results.
 
 (I’ll write a separate post explaining DESeq2 and edgeR.)
 
@@ -81,8 +80,7 @@ Tools such as **DESeq2**, **edgeR**, and **limma/voom** solve this by:
 
 ## Why these methods are not appropriate for single-cell RNA-seq
 
-These normalization methods correct only for sequencing depth and sometimes gene length.  
-But single-cell RNA-seq data behave very differently. For example, TPM forces every cell to have the same total expression — which is incorrect for single-cell biology.
+These normalization methods correct only for sequencing depth and sometimes gene length. But single-cell RNA-seq data behave very differently. For example, TPM forces every cell to have the same total expression which is incorrect for single-cell biology.
 
 ### ✔️ In bulk RNA-seq
 
@@ -114,8 +112,8 @@ Variation in library size comes from:
 
 Because of this, the observed library size in a single cell is **not** a reliable measure of true RNA content. TPM (and similar methods) wrongly force every cell to have the same total expression, which:
 
-• removes true biological differences,  
-• amplifies technical noise,  
+• removes true biological differences. 
+• amplifies technical noise. 
 • distorts downstream analyses (clustering, trajectories, DE).
 
 ---

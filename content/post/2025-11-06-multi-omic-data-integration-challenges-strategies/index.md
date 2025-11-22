@@ -1,5 +1,6 @@
 ---
 title: "Multi-Omic Data Integration Challenges & Strategies"
+author: "Nasim Rahmatpour"
 date: 2025-11-06
 draft: false
 tags: ["multi-omics", "integration", "Seurat", "MOFA+", "WNN", "TotalVI"]

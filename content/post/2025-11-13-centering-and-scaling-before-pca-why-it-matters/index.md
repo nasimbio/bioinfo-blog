@@ -1,6 +1,6 @@
 ---
 title: "Centering and Scaling Before PCA in Single Cell RNA-seq; Why It Matters"
-author: "Nasim"
+author: "Nasim Rahmatpour"
 date: "2025-11-13"
 slug: "centering-and-scaling-before-pca-why-it-matters"
 draft: false

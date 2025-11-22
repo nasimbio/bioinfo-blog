@@ -34,8 +34,8 @@ Below are the most common normalization methods, their intended applications, an
 
 1. CPM (Counts Per Million)
 • Adjusts only for sequencing depth.
-• Appropriate for comparing the same gene across different samples.
-• Not appropriate for comparing different genes within a sample (does not correct for gene length).
+• Appropriate for comparing the same gene expression across different samples.
+• Not appropriate for comparing different genes expression within a sample (does not correct for gene length).
 • ❌ Not suitable for DGE analysis (does not correct compositional bias)." />
   <meta name="author" content="Nasim Rahmatpour" /><link rel="preload stylesheet" as="style" href="https://nasimbio.github.io/bioinfo-blog/main.min.css" />
 
@@ -71,8 +71,8 @@ Below are the most common normalization methods, their intended applications, an
 Without proper normalization, DGE can produce biased or misleading results.
 Below are the most common normalization methods, their intended applications, and whether they are appropriate for DGE.
 1. CPM (Counts Per Million) • Adjusts only for sequencing depth.
-• Appropriate for comparing the same gene across different samples.
-• Not appropriate for comparing different genes within a sample (does not correct for gene length).
+• Appropriate for comparing the same gene expression across different samples.
+• Not appropriate for comparing different genes expression within a sample (does not correct for gene length).
 • ❌ Not suitable for DGE analysis (does not correct compositional bias).">
   <meta itemprop="datePublished" content="2025-11-21T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-11-21T00:00:00+00:00">
@@ -87,8 +87,8 @@ Below are the most common normalization methods, their intended applications, an
 Without proper normalization, DGE can produce biased or misleading results.
 Below are the most common normalization methods, their intended applications, and whether they are appropriate for DGE.
 1. CPM (Counts Per Million) • Adjusts only for sequencing depth.
-• Appropriate for comparing the same gene across different samples.
-• Not appropriate for comparing different genes within a sample (does not correct for gene length).
+• Appropriate for comparing the same gene expression across different samples.
+• Not appropriate for comparing different genes expression within a sample (does not correct for gene length).
 • ❌ Not suitable for DGE analysis (does not correct compositional bias).">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
@@ -108,8 +108,8 @@ Below are the most common normalization methods, their intended applications, an
 Without proper normalization, DGE can produce biased or misleading results.
 Below are the most common normalization methods, their intended applications, and whether they are appropriate for DGE.
 1. CPM (Counts Per Million) • Adjusts only for sequencing depth.
-• Appropriate for comparing the same gene across different samples.
-• Not appropriate for comparing different genes within a sample (does not correct for gene length).
+• Appropriate for comparing the same gene expression across different samples.
+• Not appropriate for comparing different genes expression within a sample (does not correct for gene length).
 • ❌ Not suitable for DGE analysis (does not correct compositional bias).">
 
   <link rel="canonical" href="https://nasimbio.github.io/bioinfo-blog/post/bulk-rnaseq-normalization-methods/" />
@@ -219,8 +219,8 @@ Below are the most common normalization methods, their intended applications, an
 <hr>
 <h2 id="1-cpm-counts-per-million">1. CPM (Counts Per Million)</h2>
 <p>• Adjusts only for sequencing depth.<br>
-• Appropriate for comparing the same gene across different samples.<br>
-• Not appropriate for comparing different genes within a sample (does not correct for gene length).<br>
+• Appropriate for comparing the same gene expression across different samples.<br>
+• Not appropriate for comparing different genes expression within a sample (does not correct for gene length).<br>
 • ❌ Not suitable for DGE analysis (does not correct compositional bias).</p>
 <hr>
 <h2 id="2-rpkm-reads-per-kilobase-per-million-reads">2. RPKM (Reads Per Kilobase per Million Reads)</h2>
@@ -238,7 +238,7 @@ Below are the most common normalization methods, their intended applications, an
 <hr>
 <h2 id="4-tpm-transcripts-per-million">4. TPM (Transcripts Per Million)</h2>
 <p>• Also normalizes for gene length and sequencing depth, but the order is reversed compared to RPKM/FPKM.<br>
-• TPM forces the sum of normalized expression to be identical for all samples (1,000,000).<br>
+• TPM forces the sum of normalized expression to be identical for all samples.<br>
 • This allows you to interpret TPM as the proportion of transcripts mapping to each gene.<br>
 • Good for comparing expression of the same gene across samples.<br>
 • Good for comparing different genes within the same sample.<br>
@@ -250,15 +250,13 @@ Below are the most common normalization methods, their intended applications, an
 <p>• one sample has many highly expressed genes (e.g., hemoglobin, ribosomes),<br>
 which artificially suppresses the apparent expression of other genes.</p>
 <p>Tools such as <strong>DESeq2</strong>, <strong>edgeR</strong>, and <strong>limma/voom</strong> solve this by:</p>
-<p>• estimating size factors,<br>
-• adjusting for compositional bias,<br>
-• modeling count data with an appropriate distribution,<br>
-• providing valid DGE results.</p>
+<p>• estimating size factors
+• adjusting for compositional bias<br>
+• modeling count data with an appropriate distribution and providing valid DGE results.</p>
 <p>(I’ll write a separate post explaining DESeq2 and edgeR.)</p>
 <hr>
 <h2 id="why-these-methods-are-not-appropriate-for-single-cell-rna-seq">Why these methods are not appropriate for single-cell RNA-seq</h2>
-<p>These normalization methods correct only for sequencing depth and sometimes gene length.<br>
-But single-cell RNA-seq data behave very differently. For example, TPM forces every cell to have the same total expression — which is incorrect for single-cell biology.</p>
+<p>These normalization methods correct only for sequencing depth and sometimes gene length. But single-cell RNA-seq data behave very differently. For example, TPM forces every cell to have the same total expression which is incorrect for single-cell biology.</p>
 <h3 id="-in-bulk-rna-seq">✔️ In bulk RNA-seq</h3>
 <p>The total RNA content is averaged across <strong>millions of cells</strong>, so:</p>
 <p>• Biological differences (cell size, cycle) wash out.<br>
@@ -284,8 +282,8 @@ But single-cell RNA-seq data behave very differently. For example, TPM forces ev
 <li>Sequencing depth differences</li>
 </ol>
 <p>Because of this, the observed library size in a single cell is <strong>not</strong> a reliable measure of true RNA content. TPM (and similar methods) wrongly force every cell to have the same total expression, which:</p>
-<p>• removes true biological differences,<br>
-• amplifies technical noise,<br>
+<p>• removes true biological differences.
+• amplifies technical noise.
 • distorts downstream analyses (clustering, trajectories, DE).</p>
 <hr>
 <h2 id="summary">Summary</h2>
