@@ -106,21 +106,21 @@ that sample:
 
 
 $$
-\text{size factor}_s =
+\text{size factor}_s
+=
 \exp\left(
-  \operatorname{median}_g \left[
-    \log(\text{count}_{g,s}) - \log(\text{geoMean}_g)
-  \right]
+\operatorname{median}_g \left[
+\log(\text{count}_{g,s}) -
+\log(\text{geoMean}_g)
+\right]
 \right)
 $$
-
 
 ---
 
 ### 7. Normalize the counts
 
-Finally, raw counts are normalized by dividing by the sample-specific
-size factor:
+Finally, raw counts are normalized by dividing by the sample-specific size factor:
 
 $$
 \text{normalized count}_{g,s}
