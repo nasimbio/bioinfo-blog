@@ -80,14 +80,12 @@ geometric mean calculation, since they would result in infinite log values.
 
 ### 4. Compute log ratios
 
-For each gene \( g \) in each sample \( s \), DESeq2 calculates the log ratio:
+For each gene *g* in each sample *s*, DESeq2 computes the log ratio:
 
-$$
-\log(\text{count}_{g,s}) - \log(\text{geoMean}_g)
-$$
+`log(count_{g,s}) - log(geoMean_g)`
 
-This measures how much the expression of a gene in a given sample deviates
-from its typical expression level across all samples.
+This measures how much the expression of a gene in a given sample deviates from
+its typical expression level across all samples.
 
 ---
 
@@ -114,13 +112,11 @@ across genes. In compact form, you can think of it as:
 Here:
 
 - `size_factor_s` is the size factor for sample *s*
-- `median_log_ratio_s` is the median log ratio for *s*
+- `median_log_ratio_s` is the median log ratio for sample *s*
 
 
 
 ---
-
-### 7. Normalize the counts
 
 ### 7. Normalize the counts
 
