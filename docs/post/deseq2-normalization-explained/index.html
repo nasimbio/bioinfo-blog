@@ -32,7 +32,7 @@ Library size differences (sequencing depth)
 Compositional bias between samples
 
 
-Why gene length normalization is not needed
+Why gene length normalization is not needed?
 Gene length normalization (like normalization methods in RPKM or TPM) is not required for
 DGE analysis because:
 
@@ -101,7 +101,7 @@ condition or tissue but not in others." />
   <meta name="generator" content="Hugo 0.152.2">
   <meta itemprop="name" content="How Does DESeq2 Perform Normalization?">
   <meta itemprop="description" content="Differential gene expression (DGE) analysis requires correcting for two major sources of technical variation:
-Library size differences (sequencing depth) Compositional bias between samples Why gene length normalization is not needed Gene length normalization (like normalization methods in RPKM or TPM) is not required for DGE analysis because:
+Library size differences (sequencing depth) Compositional bias between samples Why gene length normalization is not needed? Gene length normalization (like normalization methods in RPKM or TPM) is not required for DGE analysis because:
 DGE compares the same gene across conditions, not different genes within a sample and the same gene has the same length in different samples. What is compositional bias and why does it matter? Compositional bias occurs when a subset of genes is highly expressed in one condition or tissue but not in others.">
   <meta itemprop="datePublished" content="2025-12-10T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-12-10T00:00:00+00:00">
@@ -110,7 +110,7 @@ DGE compares the same gene across conditions, not different genes within a sampl
   <meta property="og:site_name" content="Bioinformatics Blogs By Nasim">
   <meta property="og:title" content="How Does DESeq2 Perform Normalization?">
   <meta property="og:description" content="Differential gene expression (DGE) analysis requires correcting for two major sources of technical variation:
-Library size differences (sequencing depth) Compositional bias between samples Why gene length normalization is not needed Gene length normalization (like normalization methods in RPKM or TPM) is not required for DGE analysis because:
+Library size differences (sequencing depth) Compositional bias between samples Why gene length normalization is not needed? Gene length normalization (like normalization methods in RPKM or TPM) is not required for DGE analysis because:
 DGE compares the same gene across conditions, not different genes within a sample and the same gene has the same length in different samples. What is compositional bias and why does it matter? Compositional bias occurs when a subset of genes is highly expressed in one condition or tissue but not in others.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
@@ -126,7 +126,7 @@ DGE compares the same gene across conditions, not different genes within a sampl
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="How Does DESeq2 Perform Normalization?">
   <meta name="twitter:description" content="Differential gene expression (DGE) analysis requires correcting for two major sources of technical variation:
-Library size differences (sequencing depth) Compositional bias between samples Why gene length normalization is not needed Gene length normalization (like normalization methods in RPKM or TPM) is not required for DGE analysis because:
+Library size differences (sequencing depth) Compositional bias between samples Why gene length normalization is not needed? Gene length normalization (like normalization methods in RPKM or TPM) is not required for DGE analysis because:
 DGE compares the same gene across conditions, not different genes within a sample and the same gene has the same length in different samples. What is compositional bias and why does it matter? Compositional bias occurs when a subset of genes is highly expressed in one condition or tissue but not in others.">
 
   <link rel="canonical" href="https://nasimbio.github.io/bioinfo-blog/post/deseq2-normalization-explained/" />
@@ -234,7 +234,7 @@ sources of technical variation:</p>
 <li><strong>Compositional bias</strong> between samples</li>
 </ol>
 <hr>
-<h2 id="why-gene-length-normalization-is-not-needed">Why gene length normalization is <em>not</em> needed</h2>
+<h2 id="why-gene-length-normalization-is-not-needed">Why gene length normalization is <em>not</em> needed?</h2>
 <p>Gene length normalization (like normalization methods in RPKM or TPM) is <strong>not required</strong> for
 DGE analysis because:</p>
 <ul>
@@ -257,8 +257,7 @@ differences and compositional bias</strong>. To adjust for library size and comp
 <hr>
 <h2 id="deseq2-normalization-the-median-of-ratios-method">DESeq2 normalization: the median-of-ratios method</h2>
 <p>DESeq2 estimates a <strong>size factor</strong> for each sample using the
-<em>median-of-ratios</em> approach.<br>
-These size factors are later used to normalize raw counts.</p>
+<em>median-of-ratios</em> approach. These size factors are later used to normalize raw counts.</p>
 <hr>
 <h2 id="step-by-step-explanation">Step-by-step explanation</h2>
 <h3 id="1-log-transform-raw-counts">1. Log-transform raw counts</h3>

@@ -17,7 +17,7 @@ sources of technical variation:
 
 ---
 
-## Why gene length normalization is *not* needed
+## Why gene length normalization is *not* needed?
 
 Gene length normalization (like normalization methods in RPKM or TPM) is **not required** for
 DGE analysis because:
@@ -47,8 +47,7 @@ differences and compositional bias**. To adjust for library size and composition
 ## DESeq2 normalization: the median-of-ratios method
 
 DESeq2 estimates a **size factor** for each sample using the
-*median-of-ratios* approach.  
-These size factors are later used to normalize raw counts.
+*median-of-ratios* approach. These size factors are later used to normalize raw counts.
 
 ---
 
