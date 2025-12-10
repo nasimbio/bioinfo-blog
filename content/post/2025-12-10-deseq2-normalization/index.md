@@ -101,16 +101,16 @@ to the reference.
 
 ### 6. Convert to a size factor
 
-convert the median ratio to normal numbers. The median log ratio is exponentiated to obtain the **size factor** for
-that sample:
-
+convert the median ratio to normal numbers. The median log ratio is exponentiated
+to obtain the **size factor** for that sample:
 
 $$
 \text{size factor}_s
 =
 \exp\left(
 \operatorname{median}_g \left[
-\log(\text{count}_{g,s}) -
+\log(\text{count}_{g,s})
+-
 \log(\text{geoMean}_g)
 \right]
 \right)
@@ -128,9 +128,8 @@ $$
 \frac{\text{raw count}_{g,s}}{\text{size factor}_s}
 $$
 
-
-These normalized counts are then used for downstream modeling and
-differential expression testing.
+These normalized counts are then used for downstream modeling and differential
+expression testing.
 
 ---
 
