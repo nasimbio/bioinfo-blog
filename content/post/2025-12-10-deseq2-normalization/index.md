@@ -105,13 +105,10 @@ convert the median ratio to normal numbers. The median log ratio is exponentiate
 to obtain the **size factor** for that sample:
 
 $$
-\text{size factor}_s
-=
+s_s =
 \exp\left(
 \operatorname{median}_g \left[
-\log(\text{count}_{g,s})
--
-\log(\text{geoMean}_g)
+\log K_{g,s} - \log G_g
 \right]
 \right)
 $$
@@ -123,9 +120,7 @@ $$
 Finally, raw counts are normalized by dividing by the sample-specific size factor:
 
 $$
-\text{normalized count}_{g,s}
-=
-\frac{\text{raw count}_{g,s}}{\text{size factor}_s}
+\tilde{K}_{g,s} = \frac{K_{g,s}}{s_s}
 $$
 
 These normalized counts are then used for downstream modeling and differential
