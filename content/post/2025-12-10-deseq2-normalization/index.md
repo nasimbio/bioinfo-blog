@@ -63,14 +63,13 @@ read counts.
 
 ### 2. Compute a pseudo-reference using the geometric mean
 
-Then it calculates the average of logs for each gene or across different samples. This is called **geometric mean**.
-This value represents a pseudo-reference expression level for that gene.
+Then it calculates the average of logs for each gene across different samples. This is called **geometric mean**. This value represents a pseudo-reference expression level for that gene.
 
 ---
 
 ### 3. Exclude genes with zero counts
 
-Genes that have Infinity after log transformation (zero counts before log transformation) in one or more samples are excluded for downstram analysis.
+Genes that have Infinity after log transformation (or zero counts before log transformation) in one or more samples are excluded for downstram analysis.
 
 ---
 

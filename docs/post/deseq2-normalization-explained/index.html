@@ -266,11 +266,10 @@ These size factors are later used to normalize raw counts.</p>
 read counts.</p>
 <hr>
 <h3 id="2-compute-a-pseudo-reference-using-the-geometric-mean">2. Compute a pseudo-reference using the geometric mean</h3>
-<p>Then it calculates the average of logs for each gene or across different samples. This is called <strong>geometric mean</strong>.
-This value represents a pseudo-reference expression level for that gene.</p>
+<p>Then it calculates the average of logs for each gene across different samples. This is called <strong>geometric mean</strong>. This value represents a pseudo-reference expression level for that gene.</p>
 <hr>
 <h3 id="3-exclude-genes-with-zero-counts">3. Exclude genes with zero counts</h3>
-<p>Genes that have Infinity after log transformation (zero counts before log transformation) in one or more samples are excluded for downstram analysis.</p>
+<p>Genes that have Infinity after log transformation (or zero counts before log transformation) in one or more samples are excluded for downstram analysis.</p>
 <hr>
 <h3 id="4-compute-log-ratios">4. Compute log ratios</h3>
 <p>For each gene <em>g</em> in each sample <em>s</em>, DESeq2 computes the log ratio:</p>
