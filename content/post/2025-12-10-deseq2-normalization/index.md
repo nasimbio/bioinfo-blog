@@ -17,7 +17,7 @@ sources of technical variation:
 
 ---
 
-## Why gene length normalization is *not* needed?
+## Why is gene length normalization *not* needed?
 
 Gene length normalization (like normalization methods in RPKM or TPM) is **not required** for
 DGE analysis because:
