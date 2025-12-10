@@ -19,13 +19,10 @@ sources of technical variation:
 
 ## Why gene length normalization is *not* needed
 
-Gene length normalization (for example, RPKM or TPM) is **not required** for
-DGE analysis with DESeq2 because:
+Gene length normalization (like normalization methods in RPKM or TPM) is **not required** for
+DGE analysis because:
 
-- DGE compares the **same gene across conditions**, not different genes within a sample and the same gene has the different samples.
-
-As a result, gene length cancels out in the comparison and does not need to be
-explicitly corrected.
+- DGE compares the **same gene across conditions**, not different genes within a sample and the same gene has the same length in different samples.
 
 ---
 
@@ -43,7 +40,7 @@ For example:
   down-regulated.
 
 DESeq2 normalization is specifically designed to correct for **both library size
-differences and compositional bias**.
+differences and compositional bias**. To adjust for library size and compositional bias, it calculates a size factor.
 
 ---
 
@@ -66,15 +63,14 @@ read counts.
 
 ### 2. Compute a pseudo-reference using the geometric mean
 
-For each gene, DESeq2 computes a **geometric mean across all samples**.
+Then it calculates the average of logs for each gene or across different samples. This is called **geometric mean**.
 This value represents a pseudo-reference expression level for that gene.
 
 ---
 
 ### 3. Exclude genes with zero counts
 
-Genes that have Infinity after log transformation (zero counts befor log transformation) in one or more samples are excluded from the
-geometric mean calculation, since they would result in infinite log values.
+Genes that have Infinity after log transformation (zero counts before log transformation) in one or more samples are excluded for downstram analysis.
 
 ---
 
@@ -83,9 +79,6 @@ geometric mean calculation, since they would result in infinite log values.
 For each gene *g* in each sample *s*, DESeq2 computes the log ratio:
 
 `log(count_{g,s}) - log(geoMean_g)`
-
-This measures how much the expression of a gene in a given sample deviates from
-its typical expression level across all samples.
 
 ---
 
@@ -99,7 +92,7 @@ to the reference.
 
 ### 6. Convert to a size factor
 
-convert the median ratio to normal numbers. The median log ratio is exponentiated
+Convert the median ratio to normal numbers. The median log ratio is exponentiated
 to obtain the **size factor** for that sample:
 
 `size_factor_s = exp(median_log_ratio_s)`
@@ -128,7 +121,7 @@ The median-of-ratios method is robust because:
 
 - **Geometric means** reduce the influence of very highly expressed genes.
 - **Medians** are resistant to outliers.
-- Normalization is driven by **moderately expressed genes**, which better
+- Normalization is driven by **moderately expressed genes** like **housekeeping genes**, which better
   represent global expression behavior.
 
 This makes DESeq2’s normalization particularly effective at correcting
