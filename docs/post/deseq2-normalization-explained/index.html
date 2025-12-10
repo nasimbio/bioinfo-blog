@@ -1,0 +1,342 @@
+<!doctype html>
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg:#faf8f1"
+  lang="en-us"
+  dir="ltr"
+><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>How Does DESeq2 Perform Normalization? - Bioinformatics Blogs By Nasim</title>
+
+  
+  <meta name="theme-color" />
+
+  <meta name="description" content="Differential gene expression (DGE) analysis requires correcting for two major
+sources of technical variation:
+
+Library size differences (sequencing depth)
+Compositional bias between samples
+
+
+Why gene length normalization is not needed
+Gene length normalization (for example, RPKM or TPM) is not required for
+DGE analysis with DESeq2 because:
+
+DGE compares the same gene across conditions, not different genes within a sample.
+The same gene has the same length across all samples.
+
+As a result, gene length cancels out in the comparison and does not need to be
+explicitly corrected." />
+  <meta name="author" content="Nasim Rahmatpour" /><link rel="preload stylesheet" as="style" href="https://nasimbio.github.io/bioinfo-blog/main.min.css" />
+
+  
+  <link rel="preload" as="image" href="https://nasimbio.github.io/bioinfo-blog/theme.png" />
+
+  
+
+  <link rel="preload" as="image" href="https://nasimbio.github.io/bioinfo-blog/github.svg" /><link rel="preload" as="image" href="https://nasimbio.github.io/bioinfo-blog/linkedin.svg" />
+
+  <script
+    defer
+    src="https://nasimbio.github.io/bioinfo-blog/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+
+  
+  <link
+    rel="icon"
+    href="https://nasimbio.github.io/bioinfo-blog/favicon.ico"
+  />
+  <link
+    rel="apple-touch-icon"
+    href="https://nasimbio.github.io/bioinfo-blog/apple-touch-icon.png"
+  />
+
+  <meta name="generator" content="Hugo 0.152.2">
+  <meta itemprop="name" content="How Does DESeq2 Perform Normalization?">
+  <meta itemprop="description" content="Differential gene expression (DGE) analysis requires correcting for two major sources of technical variation:
+Library size differences (sequencing depth) Compositional bias between samples Why gene length normalization is not needed Gene length normalization (for example, RPKM or TPM) is not required for DGE analysis with DESeq2 because:
+DGE compares the same gene across conditions, not different genes within a sample. The same gene has the same length across all samples. As a result, gene length cancels out in the comparison and does not need to be explicitly corrected.">
+  <meta itemprop="datePublished" content="2025-12-10T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-12-10T00:00:00+00:00">
+  <meta itemprop="wordCount" content="517">
+  <meta itemprop="keywords" content="Normalization,DESeq2,DGE,RNA-Seq,Bulk-RNA"><meta property="og:url" content="https://nasimbio.github.io/bioinfo-blog/post/deseq2-normalization-explained/">
+  <meta property="og:site_name" content="Bioinformatics Blogs By Nasim">
+  <meta property="og:title" content="How Does DESeq2 Perform Normalization?">
+  <meta property="og:description" content="Differential gene expression (DGE) analysis requires correcting for two major sources of technical variation:
+Library size differences (sequencing depth) Compositional bias between samples Why gene length normalization is not needed Gene length normalization (for example, RPKM or TPM) is not required for DGE analysis with DESeq2 because:
+DGE compares the same gene across conditions, not different genes within a sample. The same gene has the same length across all samples. As a result, gene length cancels out in the comparison and does not need to be explicitly corrected.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-12-10T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-12-10T00:00:00+00:00">
+    <meta property="article:tag" content="Normalization">
+    <meta property="article:tag" content="DESeq2">
+    <meta property="article:tag" content="DGE">
+    <meta property="article:tag" content="RNA-Seq">
+    <meta property="article:tag" content="Bulk-RNA">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="How Does DESeq2 Perform Normalization?">
+  <meta name="twitter:description" content="Differential gene expression (DGE) analysis requires correcting for two major sources of technical variation:
+Library size differences (sequencing depth) Compositional bias between samples Why gene length normalization is not needed Gene length normalization (for example, RPKM or TPM) is not required for DGE analysis with DESeq2 because:
+DGE compares the same gene across conditions, not different genes within a sample. The same gene has the same length across all samples. As a result, gene length cancels out in the comparison and does not need to be explicitly corrected.">
+
+  <link rel="canonical" href="https://nasimbio.github.io/bioinfo-blog/post/deseq2-normalization-explained/" />
+</head>
+<body
+    class="bg-(--bg) text-black antialiased duration-200 ease-out [-webkit-tap-highlight-color:transparent] dark:text-white"
+  ><header
+  class="mx-auto flex h-[4.5rem] max-w-(--w) px-8 whitespace-nowrap lg:justify-center"
+>
+  <div class="relative z-50 flex items-center ltr:mr-auto rtl:ml-auto">
+    <a
+      class="-translate-y-[1px] text-2xl font-medium"
+      href="https://nasimbio.github.io/bioinfo-blog/"
+      >Bioinformatics Blogs By Nasim</a
+    >
+    <div
+      class="btn-dark text-[0px] ltr:ml-4 rtl:mr-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden ltr:-mr-8 rtl:-ml-8"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full flex-col justify-center bg-(--bg) pb-16 duration-200 select-none lg:static lg:h-auto lg:flex-row lg:bg-transparent! lg:pb-0 lg:transition-none"
+  ><nav
+      class="mt-12 flex justify-center space-x-10 lg:mt-0 lg:items-center ltr:lg:ml-14 rtl:space-x-reverse rtl:lg:mr-14 dark:invert"
+    >
+      <a
+        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/nasimbio"
+        target="_blank"
+        rel="me"
+      >github</a>
+      <a
+        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./linkedin.svg)"
+        href="https://linkedin.com/in/nasimrahmatpour"
+        target="_blank"
+        rel="me"
+      >linkedin</a>
+    </nav>
+  </div>
+</header>
+<main
+      class="prose prose-neutral dark:prose-invert relative mx-auto min-h-[calc(100vh-9rem)] max-w-(--w) px-8 pt-14 pb-16"
+    ><article>
+  <header class="mb-14">
+    <h1 class="my-0! pb-2.5">How Does DESeq2 Perform Normalization?</h1><div class="text-xs antialiased opacity-60"><time>Dec 10, 2025</time><span class="mx-1">&middot;</span>
+      <span>Nasim Rahmatpour</span></div></header>
+
+  <section><p>Differential gene expression (DGE) analysis requires correcting for two major
+sources of technical variation:</p>
+<ol>
+<li><strong>Library size differences</strong> (sequencing depth)</li>
+<li><strong>Compositional bias</strong> between samples</li>
+</ol>
+<hr>
+<h2 id="why-gene-length-normalization-is-not-needed">Why gene length normalization is <em>not</em> needed</h2>
+<p>Gene length normalization (for example, RPKM or TPM) is <strong>not required</strong> for
+DGE analysis with DESeq2 because:</p>
+<ul>
+<li>DGE compares the <strong>same gene across conditions</strong>, not different genes within a sample.</li>
+<li>The same gene has the same length across all samples.</li>
+</ul>
+<p>As a result, gene length cancels out in the comparison and does not need to be
+explicitly corrected.</p>
+<hr>
+<h2 id="what-is-compositional-bias-and-why-does-it-matter">What is compositional bias and why does it matter?</h2>
+<p>Compositional bias occurs when a subset of genes is <strong>highly expressed in one
+condition or tissue but not in others</strong>.</p>
+<p>For example:</p>
+<ul>
+<li>In one tissue, a small set of tissue-specific genes may dominate the read counts.</li>
+<li>Because sequencing depth is fixed, this forces other genes to receive fewer reads,
+even if their true expression has not changed.</li>
+<li>Simply scaling by total library size would make many genes appear falsely
+down-regulated.</li>
+</ul>
+<p>DESeq2 normalization is specifically designed to correct for <strong>both library size
+differences and compositional bias</strong>.</p>
+<hr>
+<h2 id="deseq2-normalization-the-median-of-ratios-method">DESeq2 normalization: the median-of-ratios method</h2>
+<p>DESeq2 estimates a <strong>size factor</strong> for each sample using the
+<em>median-of-ratios</em> approach.<br>
+These size factors are later used to normalize raw counts.</p>
+<hr>
+<h2 id="step-by-step-explanation">Step-by-step explanation</h2>
+<h3 id="1-log-transform-raw-counts">1. Log-transform raw counts</h3>
+<p>For each gene in each sample, DESeq2 considers the natural logarithm of the raw
+read counts.<br>
+Genes with zero counts are handled by excluding them from the reference set.</p>
+<hr>
+<h3 id="2-compute-a-pseudo-reference-using-the-geometric-mean">2. Compute a pseudo-reference using the geometric mean</h3>
+<p>For each gene, DESeq2 computes a <strong>geometric mean across all samples</strong>.
+This value represents a pseudo-reference expression level for that gene.</p>
+<hr>
+<h3 id="3-exclude-genes-with-zero-counts">3. Exclude genes with zero counts</h3>
+<p>Genes that have zero counts in one or more samples are excluded from the
+geometric mean calculation, since they would result in infinite log values.</p>
+<hr>
+<h3 id="4-compute-log-ratios">4. Compute log ratios</h3>
+<p>For each gene ( g ) in each sample ( s ), DESeq2 calculates the log ratio:</p>
+<p>$$
+\log(\text{count}_{g,s}) - \log(\text{geoMean}_g)
+$$</p>
+<p>This measures how much the expression of a gene in a given sample deviates
+from its typical expression level across all samples.</p>
+<hr>
+<h3 id="5-take-the-median-across-genes">5. Take the median across genes</h3>
+<p>For each sample, DESeq2 takes the <strong>median</strong> of all gene-level log ratios.
+This single value summarizes the overall shift of the sample relative
+to the reference.</p>
+<hr>
+<h3 id="6-convert-to-a-size-factor">6. Convert to a size factor</h3>
+<p>The median log ratio is exponentiated to obtain the <strong>size factor</strong> for
+that sample:</p>
+<p>$$
+\text{size factor}_s = \exp\left( \text{median}<em>g \left[
+\log(\text{count}</em>{g,s}) - \log(\text{geoMean}_g)
+\right] \right)
+$$</p>
+<hr>
+<h3 id="7-normalize-the-counts">7. Normalize the counts</h3>
+<p>Finally, raw counts are normalized by dividing by the sample-specific
+size factor:</p>
+<p>$$
+\text{normalized count}<em>{g,s} =
+\frac{\text{raw count}</em>{g,s}}{\text{size factor}_s}
+$$</p>
+<p>These normalized counts are then used for downstream modeling and
+differential expression testing.</p>
+<hr>
+<h2 id="why-this-approach-works-well">Why this approach works well</h2>
+<p>The median-of-ratios method is robust because:</p>
+<ul>
+<li><strong>Geometric means</strong> reduce the influence of very highly expressed genes.</li>
+<li><strong>Medians</strong> are resistant to outliers.</li>
+<li>Normalization is driven by <strong>moderately expressed genes</strong>, which better
+represent global expression behavior.</li>
+</ul>
+<p>This makes DESeq2’s normalization particularly effective at correcting
+compositional bias while preserving true biological differences.</p>
+<hr>
+<p>🔍 For better visualization examples, see this link:<br>
+<em>(<a href="https://hbctraining.github.io/DGE_workshop/lessons/02_DGE_count_normalization.html">https://hbctraining.github.io/DGE_workshop/lessons/02_DGE_count_normalization.html</a>)</em></p>
+</section>
+
+  <footer class="mt-12 flex flex-wrap"><a
+      class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://nasimbio.github.io/bioinfo-blog/tags/normalization"
+      >Normalization</a
+    ><a
+      class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://nasimbio.github.io/bioinfo-blog/tags/rna-seq"
+      >RNA-seq</a
+    ><a
+      class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://nasimbio.github.io/bioinfo-blog/tags/deseq2"
+      >DESeq2</a
+    ><a
+      class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://nasimbio.github.io/bioinfo-blog/tags/dge"
+      >DGE</a
+    ><a
+      class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://nasimbio.github.io/bioinfo-blog/tags/rna-seq"
+      >RNA-seq</a
+    ><a
+      class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://nasimbio.github.io/bioinfo-blog/tags/bulk-rna"
+      >bulk-RNA</a
+    ></footer><nav
+    class="mt-24 flex overflow-hidden rounded-xl bg-black/[3%] text-lg leading-[1.2]! *:flex *:w-1/2 *:items-center *:p-5 *:font-medium *:no-underline dark:bg-white/[8%] [&>*:hover]:bg-black/[2%] dark:[&>*:hover]:bg-white/[3%]"
+  ><a
+      class="justify-end pl-3 ltr:ml-auto rtl:mr-auto"
+      href="https://nasimbio.github.io/bioinfo-blog/post/bulk-rnaseq-normalization-methods/"
+      ><span>Bulk RNA-seq Normalization Methods</span><span class="ltr:ml-1.5 rtl:mr-1.5">→</span></a
+    ></nav></article></main><footer
+  class="mx-auto flex h-[4.5rem] max-w-(--w) items-center px-8 text-xs tracking-wider uppercase opacity-60"
+>
+  <div class="mr-auto">&copy;2025
+    <a class="link" href="https://nasimbio.github.io/bioinfo-blog/">Bioinformatics Blogs By Nasim</a></div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >powered by hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >hugo-paper</a
+  >
+</footer>
+</body>
+</html>

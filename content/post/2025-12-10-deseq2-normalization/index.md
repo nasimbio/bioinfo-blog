@@ -1,0 +1,146 @@
+---
+title: "How Does DESeq2 Perform Normalization?"
+author: "Nasim Rahmatpour"
+date: "2025-12-10"
+slug: "deseq2-normalization-explained"
+draft: false
+categories: ["RNA-seq", "Normalization"]
+tags: ["Normalization", "RNA-seq", "DESeq2", "DGE", "RNA-seq", "bulk-RNA"]
+---
+
+Differential gene expression (DGE) analysis requires correcting for two major
+sources of technical variation:
+
+1. **Library size differences** (sequencing depth)
+2. **Compositional bias** between samples
+
+---
+
+## Why gene length normalization is *not* needed
+
+Gene length normalization (for example, RPKM or TPM) is **not required** for
+DGE analysis with DESeq2 because:
+
+- DGE compares the **same gene across conditions**, not different genes within a sample.
+- The same gene has the same length across all samples.
+
+As a result, gene length cancels out in the comparison and does not need to be
+explicitly corrected.
+
+---
+
+## What is compositional bias and why does it matter?
+
+Compositional bias occurs when a subset of genes is **highly expressed in one
+condition or tissue but not in others**.
+
+For example:
+
+- In one tissue, a small set of tissue-specific genes may dominate the read counts.
+- Because sequencing depth is fixed, this forces other genes to receive fewer reads,
+  even if their true expression has not changed.
+- Simply scaling by total library size would make many genes appear falsely
+  down-regulated.
+
+DESeq2 normalization is specifically designed to correct for **both library size
+differences and compositional bias**.
+
+---
+
+## DESeq2 normalization: the median-of-ratios method
+
+DESeq2 estimates a **size factor** for each sample using the
+*median-of-ratios* approach.  
+These size factors are later used to normalize raw counts.
+
+---
+
+## Step-by-step explanation
+
+### 1. Log-transform raw counts
+
+For each gene in each sample, DESeq2 considers the natural logarithm of the raw
+read counts.  
+Genes with zero counts are handled by excluding them from the reference set.
+
+---
+
+### 2. Compute a pseudo-reference using the geometric mean
+
+For each gene, DESeq2 computes a **geometric mean across all samples**.
+This value represents a pseudo-reference expression level for that gene.
+
+---
+
+### 3. Exclude genes with zero counts
+
+Genes that have zero counts in one or more samples are excluded from the
+geometric mean calculation, since they would result in infinite log values.
+
+---
+
+### 4. Compute log ratios
+
+For each gene \( g \) in each sample \( s \), DESeq2 calculates the log ratio:
+
+$$
+\log(\text{count}_{g,s}) - \log(\text{geoMean}_g)
+$$
+
+This measures how much the expression of a gene in a given sample deviates
+from its typical expression level across all samples.
+
+---
+
+### 5. Take the median across genes
+
+For each sample, DESeq2 takes the **median** of all gene-level log ratios.
+This single value summarizes the overall shift of the sample relative
+to the reference.
+
+---
+
+### 6. Convert to a size factor
+
+The median log ratio is exponentiated to obtain the **size factor** for
+that sample:
+
+$$
+\text{size factor}_s = \exp\left( \text{median}_g \left[
+\log(\text{count}_{g,s}) - \log(\text{geoMean}_g)
+\right] \right)
+$$
+
+---
+
+### 7. Normalize the counts
+
+Finally, raw counts are normalized by dividing by the sample-specific
+size factor:
+
+$$
+\text{normalized count}_{g,s} =
+\frac{\text{raw count}_{g,s}}{\text{size factor}_s}
+$$
+
+These normalized counts are then used for downstream modeling and
+differential expression testing.
+
+---
+
+## Why this approach works well
+
+The median-of-ratios method is robust because:
+
+- **Geometric means** reduce the influence of very highly expressed genes.
+- **Medians** are resistant to outliers.
+- Normalization is driven by **moderately expressed genes**, which better
+  represent global expression behavior.
+
+This makes DESeq2’s normalization particularly effective at correcting
+compositional bias while preserving true biological differences.
+
+---
+
+🔍 For better visualization examples, see this link:  
+*(https://hbctraining.github.io/DGE_workshop/lessons/02_DGE_count_normalization.html)* 
