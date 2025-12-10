@@ -104,24 +104,29 @@ to the reference.
 convert the median ratio to normal numbers. The median log ratio is exponentiated
 to obtain the **size factor** for that sample:
 
-$$
-s_s =
-\exp\left(
-\operatorname{median}_g \left[
-\log K_{g,s} - \log G_g
-\right]
-\right)
-$$
+### 6. Convert to a size factor
+
+To obtain the size factor for a sample, DESeq2 exponentiates the median log ratio
+across genes. In compact form, you can think of it as:
+
+`size_factor_s = exp(median_log_ratio_s)`
+
+Here:
+
+- `size_factor_s` is the size factor for sample *s*
+- `median_log_ratio_s` is the median log ratio for *s*
+
+
 
 ---
 
 ### 7. Normalize the counts
 
+### 7. Normalize the counts
+
 Finally, raw counts are normalized by dividing by the sample-specific size factor:
 
-$$
-\tilde{K}_{g,s} = \frac{K_{g,s}}{s_s}
-$$
+`normalized_count_{g,s} = raw_count_{g,s} / size_factor_s`
 
 These normalized counts are then used for downstream modeling and differential
 expression testing.
