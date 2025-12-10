@@ -104,11 +104,16 @@ to the reference.
 convert the median ratio to normal numbers. The median log ratio is exponentiated to obtain the **size factor** for
 that sample:
 
+
 $$
-\text{size factor}_s = \exp\left( \text{median}_g \left[
-\log(\text{count}_{g,s}) - \log(\text{geoMean}_g)
-\right] \right)
+\text{size factor}_s =
+\exp\left(
+  \operatorname{median}_g \left[
+    \log(\text{count}_{g,s}) - \log(\text{geoMean}_g)
+  \right]
+\right)
 $$
+
 
 ---
 
@@ -118,9 +123,11 @@ Finally, raw counts are normalized by dividing by the sample-specific
 size factor:
 
 $$
-\text{normalized count}_{g,s} =
+\text{normalized count}_{g,s}
+=
 \frac{\text{raw count}_{g,s}}{\text{size factor}_s}
 $$
+
 
 These normalized counts are then used for downstream modeling and
 differential expression testing.

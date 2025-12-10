@@ -103,7 +103,7 @@ Library size differences (sequencing depth) Compositional bias between samples W
 DGE compares the same gene across conditions, not different genes within a sample and the same gene has the different samples. As a result, gene length cancels out in the comparison and does not need to be explicitly corrected.">
   <meta itemprop="datePublished" content="2025-12-10T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-12-10T00:00:00+00:00">
-  <meta itemprop="wordCount" content="516">
+  <meta itemprop="wordCount" content="515">
   <meta itemprop="keywords" content="Normalization,DESeq2,DGE,RNA-Seq,Bulk-RNA"><meta property="og:url" content="https://nasimbio.github.io/bioinfo-blog/post/deseq2-normalization-explained/">
   <meta property="og:site_name" content="Bioinformatics Blogs By Nasim">
   <meta property="og:title" content="How Does DESeq2 Perform Normalization?">
@@ -290,17 +290,20 @@ to the reference.</p>
 <p>convert the median ratio to normal numbers. The median log ratio is exponentiated to obtain the <strong>size factor</strong> for
 that sample:</p>
 <p>$$
-\text{size factor}_s = \exp\left( \text{median}<em>g \left[
+\text{size factor}_s =
+\exp\left(
+\operatorname{median}<em>g \left[
 \log(\text{count}</em>{g,s}) - \log(\text{geoMean}_g)
-\right] \right)
+\right]
+\right)
 $$</p>
 <hr>
 <h3 id="7-normalize-the-counts">7. Normalize the counts</h3>
 <p>Finally, raw counts are normalized by dividing by the sample-specific
 size factor:</p>
-<p>$$
-\text{normalized count}<em>{g,s} =
-\frac{\text{raw count}</em>{g,s}}{\text{size factor}_s}
+<h1 id="textnormalized-count_gs">$$
+\text{normalized count}_{g,s}</h1>
+<p>\frac{\text{raw count}_{g,s}}{\text{size factor}_s}
 $$</p>
 <p>These normalized counts are then used for downstream modeling and
 differential expression testing.</p>
