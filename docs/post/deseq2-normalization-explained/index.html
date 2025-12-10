@@ -103,7 +103,7 @@ Library size differences (sequencing depth) Compositional bias between samples W
 DGE compares the same gene across conditions, not different genes within a sample and the same gene has the different samples. As a result, gene length cancels out in the comparison and does not need to be explicitly corrected.">
   <meta itemprop="datePublished" content="2025-12-10T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-12-10T00:00:00+00:00">
-  <meta itemprop="wordCount" content="546">
+  <meta itemprop="wordCount" content="515">
   <meta itemprop="keywords" content="Normalization,DESeq2,DGE,RNA-Seq,Bulk-RNA"><meta property="og:url" content="https://nasimbio.github.io/bioinfo-blog/post/deseq2-normalization-explained/">
   <meta property="og:site_name" content="Bioinformatics Blogs By Nasim">
   <meta property="og:title" content="How Does DESeq2 Perform Normalization?">
@@ -287,9 +287,6 @@ to the reference.</p>
 <h3 id="6-convert-to-a-size-factor">6. Convert to a size factor</h3>
 <p>convert the median ratio to normal numbers. The median log ratio is exponentiated
 to obtain the <strong>size factor</strong> for that sample:</p>
-<h3 id="6-convert-to-a-size-factor-1">6. Convert to a size factor</h3>
-<p>To obtain the size factor for a sample, DESeq2 exponentiates the median log ratio
-across genes. In compact form, you can think of it as:</p>
 <p><code>size_factor_s = exp(median_log_ratio_s)</code></p>
 <p>Here:</p>
 <ul>

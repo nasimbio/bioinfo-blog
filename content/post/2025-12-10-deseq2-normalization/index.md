@@ -102,19 +102,12 @@ to the reference.
 convert the median ratio to normal numbers. The median log ratio is exponentiated
 to obtain the **size factor** for that sample:
 
-### 6. Convert to a size factor
-
-To obtain the size factor for a sample, DESeq2 exponentiates the median log ratio
-across genes. In compact form, you can think of it as:
-
 `size_factor_s = exp(median_log_ratio_s)`
 
 Here:
 
 - `size_factor_s` is the size factor for sample *s*
 - `median_log_ratio_s` is the median log ratio for sample *s*
-
-
 
 ---
 
