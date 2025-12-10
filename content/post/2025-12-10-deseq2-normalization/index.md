@@ -6,6 +6,7 @@ slug: "deseq2-normalization-explained"
 draft: false
 categories: ["RNA-seq", "Normalization"]
 tags: ["Normalization", "RNA-seq", "DESeq2", "DGE", "RNA-seq", "bulk-RNA"]
+math: true
 ---
 
 Differential gene expression (DGE) analysis requires correcting for two major
@@ -21,8 +22,7 @@ sources of technical variation:
 Gene length normalization (for example, RPKM or TPM) is **not required** for
 DGE analysis with DESeq2 because:
 
-- DGE compares the **same gene across conditions**, not different genes within a sample.
-- The same gene has the same length across all samples.
+- DGE compares the **same gene across conditions**, not different genes within a sample and the same gene has the different samples.
 
 As a result, gene length cancels out in the comparison and does not need to be
 explicitly corrected.
@@ -61,7 +61,6 @@ These size factors are later used to normalize raw counts.
 
 For each gene in each sample, DESeq2 considers the natural logarithm of the raw
 read counts.  
-Genes with zero counts are handled by excluding them from the reference set.
 
 ---
 
@@ -74,7 +73,7 @@ This value represents a pseudo-reference expression level for that gene.
 
 ### 3. Exclude genes with zero counts
 
-Genes that have zero counts in one or more samples are excluded from the
+Genes that have Infinity after log transformation (zero counts befor log transformation) in one or more samples are excluded from the
 geometric mean calculation, since they would result in infinite log values.
 
 ---
@@ -102,7 +101,7 @@ to the reference.
 
 ### 6. Convert to a size factor
 
-The median log ratio is exponentiated to obtain the **size factor** for
+convert the median ratio to normal numbers. The median log ratio is exponentiated to obtain the **size factor** for
 that sample:
 
 $$

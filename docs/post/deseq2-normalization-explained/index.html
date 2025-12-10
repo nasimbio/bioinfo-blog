@@ -36,8 +36,7 @@ Why gene length normalization is not needed
 Gene length normalization (for example, RPKM or TPM) is not required for
 DGE analysis with DESeq2 because:
 
-DGE compares the same gene across conditions, not different genes within a sample.
-The same gene has the same length across all samples.
+DGE compares the same gene across conditions, not different genes within a sample and the same gene has the different samples.
 
 As a result, gene length cancels out in the comparison and does not need to be
 explicitly corrected." />
@@ -54,7 +53,38 @@ explicitly corrected." />
     defer
     src="https://nasimbio.github.io/bioinfo-blog/highlight.min.js"
     onload="hljs.initHighlightingOnLoad();"
-  ></script>
+  ></script><link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script><script>
+  document.addEventListener('DOMContentLoaded', () =>
+    renderMathInElement(document.body, {
+      
+      
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+      ],
+      
+      throwOnError: false,
+    }),
+  );
+</script>
+
 
   
   <link
@@ -70,16 +100,16 @@ explicitly corrected." />
   <meta itemprop="name" content="How Does DESeq2 Perform Normalization?">
   <meta itemprop="description" content="Differential gene expression (DGE) analysis requires correcting for two major sources of technical variation:
 Library size differences (sequencing depth) Compositional bias between samples Why gene length normalization is not needed Gene length normalization (for example, RPKM or TPM) is not required for DGE analysis with DESeq2 because:
-DGE compares the same gene across conditions, not different genes within a sample. The same gene has the same length across all samples. As a result, gene length cancels out in the comparison and does not need to be explicitly corrected.">
+DGE compares the same gene across conditions, not different genes within a sample and the same gene has the different samples. As a result, gene length cancels out in the comparison and does not need to be explicitly corrected.">
   <meta itemprop="datePublished" content="2025-12-10T00:00:00+00:00">
   <meta itemprop="dateModified" content="2025-12-10T00:00:00+00:00">
-  <meta itemprop="wordCount" content="517">
+  <meta itemprop="wordCount" content="516">
   <meta itemprop="keywords" content="Normalization,DESeq2,DGE,RNA-Seq,Bulk-RNA"><meta property="og:url" content="https://nasimbio.github.io/bioinfo-blog/post/deseq2-normalization-explained/">
   <meta property="og:site_name" content="Bioinformatics Blogs By Nasim">
   <meta property="og:title" content="How Does DESeq2 Perform Normalization?">
   <meta property="og:description" content="Differential gene expression (DGE) analysis requires correcting for two major sources of technical variation:
 Library size differences (sequencing depth) Compositional bias between samples Why gene length normalization is not needed Gene length normalization (for example, RPKM or TPM) is not required for DGE analysis with DESeq2 because:
-DGE compares the same gene across conditions, not different genes within a sample. The same gene has the same length across all samples. As a result, gene length cancels out in the comparison and does not need to be explicitly corrected.">
+DGE compares the same gene across conditions, not different genes within a sample and the same gene has the different samples. As a result, gene length cancels out in the comparison and does not need to be explicitly corrected.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
@@ -95,7 +125,7 @@ DGE compares the same gene across conditions, not different genes within a sampl
   <meta name="twitter:title" content="How Does DESeq2 Perform Normalization?">
   <meta name="twitter:description" content="Differential gene expression (DGE) analysis requires correcting for two major sources of technical variation:
 Library size differences (sequencing depth) Compositional bias between samples Why gene length normalization is not needed Gene length normalization (for example, RPKM or TPM) is not required for DGE analysis with DESeq2 because:
-DGE compares the same gene across conditions, not different genes within a sample. The same gene has the same length across all samples. As a result, gene length cancels out in the comparison and does not need to be explicitly corrected.">
+DGE compares the same gene across conditions, not different genes within a sample and the same gene has the different samples. As a result, gene length cancels out in the comparison and does not need to be explicitly corrected.">
 
   <link rel="canonical" href="https://nasimbio.github.io/bioinfo-blog/post/deseq2-normalization-explained/" />
 </head>
@@ -206,8 +236,7 @@ sources of technical variation:</p>
 <p>Gene length normalization (for example, RPKM or TPM) is <strong>not required</strong> for
 DGE analysis with DESeq2 because:</p>
 <ul>
-<li>DGE compares the <strong>same gene across conditions</strong>, not different genes within a sample.</li>
-<li>The same gene has the same length across all samples.</li>
+<li>DGE compares the <strong>same gene across conditions</strong>, not different genes within a sample and the same gene has the different samples.</li>
 </ul>
 <p>As a result, gene length cancels out in the comparison and does not need to be
 explicitly corrected.</p>
@@ -234,15 +263,14 @@ These size factors are later used to normalize raw counts.</p>
 <h2 id="step-by-step-explanation">Step-by-step explanation</h2>
 <h3 id="1-log-transform-raw-counts">1. Log-transform raw counts</h3>
 <p>For each gene in each sample, DESeq2 considers the natural logarithm of the raw
-read counts.<br>
-Genes with zero counts are handled by excluding them from the reference set.</p>
+read counts.</p>
 <hr>
 <h3 id="2-compute-a-pseudo-reference-using-the-geometric-mean">2. Compute a pseudo-reference using the geometric mean</h3>
 <p>For each gene, DESeq2 computes a <strong>geometric mean across all samples</strong>.
 This value represents a pseudo-reference expression level for that gene.</p>
 <hr>
 <h3 id="3-exclude-genes-with-zero-counts">3. Exclude genes with zero counts</h3>
-<p>Genes that have zero counts in one or more samples are excluded from the
+<p>Genes that have Infinity after log transformation (zero counts befor log transformation) in one or more samples are excluded from the
 geometric mean calculation, since they would result in infinite log values.</p>
 <hr>
 <h3 id="4-compute-log-ratios">4. Compute log ratios</h3>
@@ -259,7 +287,7 @@ This single value summarizes the overall shift of the sample relative
 to the reference.</p>
 <hr>
 <h3 id="6-convert-to-a-size-factor">6. Convert to a size factor</h3>
-<p>The median log ratio is exponentiated to obtain the <strong>size factor</strong> for
+<p>convert the median ratio to normal numbers. The median log ratio is exponentiated to obtain the <strong>size factor</strong> for
 that sample:</p>
 <p>$$
 \text{size factor}_s = \exp\left( \text{median}<em>g \left[
