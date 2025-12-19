@@ -2,7 +2,7 @@
 title: "How Does edgeR Perform Normalization?"
 author: "Nasim Rahmatpour"
 date: 2025-12-19
-slug: "deseq2-normalization-explained"
+slug: "edgeR-normalization-explained"
 draft: false
 categories: ["RNA-seq", "Normalization"]
 tags: ["Normalization", "RNA-seq", "DESeq2", "DGE", "RNA-seq", "bulk-RNA"]
