@@ -6,15 +6,8 @@
     <description>Recent content in Bioinformatics Blog by Nasim on Bioinformatics Blogs By Nasim</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 19 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 10 Dec 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nasimbio.github.io/bioinfo-blog/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>How Does edgeR Perform Normalization?</title>
-      <link>https://nasimbio.github.io/bioinfo-blog/post/deseq2-normalization-explained/</link>
-      <pubDate>Fri, 19 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>https://nasimbio.github.io/bioinfo-blog/post/deseq2-normalization-explained/</guid>
-      <description>&lt;div id=&#34;how-does-edger-perform-normalization&#34; class=&#34;section level2&#34;&gt;&#xA;&lt;h2&gt;How Does edgeR Perform Normalization?&lt;/h2&gt;&#xA;&lt;p&gt;In my previous blog post, I explained why &lt;strong&gt;library size&lt;/strong&gt; and &lt;strong&gt;compositional bias&lt;/strong&gt; must be accounted for in differential gene expression (DGE) analysis.&lt;br /&gt;&#xA;&lt;strong&gt;edgeR&lt;/strong&gt;, similar to &lt;strong&gt;DESeq2&lt;/strong&gt;, is a widely used tool for DGE analysis. In this post, I explain &lt;strong&gt;how edgeR performs normalization step by step&lt;/strong&gt;, focusing on its default method: &lt;strong&gt;TMM (Trimmed Mean of M values)&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;hr /&gt;&#xA;&lt;/div&gt;&#xA;&lt;div id=&#34;step-by-step-normalization-in-edger&#34; class=&#34;section level2&#34;&gt;&#xA;&lt;h2&gt;Step-by-step normalization in edgeR&lt;/h2&gt;&#xA;&lt;div id=&#34;remove-genes-with-zero-expression-in-all-samples&#34; class=&#34;section level3&#34;&gt;&#xA;&lt;h3&gt;1. Remove genes with zero expression in all samples&lt;/h3&gt;&#xA;&lt;p&gt;Genes that have zero counts across all samples do not contain useful information and would lead to undefined log ratios. These genes are therefore excluded from the normalization procedure.&lt;/p&gt;</description>
-    </item>
     <item>
       <title>How Does DESeq2 Perform Normalization?</title>
       <link>https://nasimbio.github.io/bioinfo-blog/post/deseq2-normalization-explained/</link>

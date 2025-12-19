@@ -20,22 +20,28 @@
   />
 
   
-  <title>How Does edgeR Perform Normalization? - Bioinformatics Blogs By Nasim</title>
+  <title>How Does DESeq2 Perform Normalization? - Bioinformatics Blogs By Nasim</title>
 
   
   <meta name="theme-color" />
 
-  <meta name="description" content="
-How Does edgeR Perform Normalization?
-In my previous blog post, I explained why library size and compositional bias must be accounted for in differential gene expression (DGE) analysis.
-edgeR, similar to DESeq2, is a widely used tool for DGE analysis. In this post, I explain how edgeR performs normalization step by step, focusing on its default method: TMM (Trimmed Mean of M values).
+  <meta name="description" content="Differential gene expression (DGE) analysis requires correcting for two major
+sources of technical variation:
+
+Library size differences (sequencing depth)
+Compositional bias between samples
 
 
+Why is gene length normalization not needed?
+Gene length normalization (like normalization methods in RPKM or TPM) is not required for
+DGE analysis because:
 
-Step-by-step normalization in edgeR
+DGE compares the same gene across conditions, not different genes within a sample and the same gene has the same length in different samples.
 
-1. Remove genes with zero expression in all samples
-Genes that have zero counts across all samples do not contain useful information and would lead to undefined log ratios. These genes are therefore excluded from the normalization procedure." />
+
+What is compositional bias and why does it matter?
+Compositional bias occurs when a subset of genes is highly expressed in one
+condition or tissue but not in others." />
   <meta name="author" content="Nasim Rahmatpour" /><link rel="preload stylesheet" as="style" href="https://nasimbio.github.io/bioinfo-blog/main.min.css" />
 
   
@@ -93,24 +99,24 @@ Genes that have zero counts across all samples do not contain useful information
   />
 
   <meta name="generator" content="Hugo 0.152.2">
-  <meta itemprop="name" content="How Does edgeR Perform Normalization?">
-  <meta itemprop="description" content="How Does edgeR Perform Normalization? In my previous blog post, I explained why library size and compositional bias must be accounted for in differential gene expression (DGE) analysis.
-edgeR, similar to DESeq2, is a widely used tool for DGE analysis. In this post, I explain how edgeR performs normalization step by step, focusing on its default method: TMM (Trimmed Mean of M values).
-Step-by-step normalization in edgeR 1. Remove genes with zero expression in all samples Genes that have zero counts across all samples do not contain useful information and would lead to undefined log ratios. These genes are therefore excluded from the normalization procedure.">
-  <meta itemprop="datePublished" content="2025-12-19T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2025-12-19T00:00:00+00:00">
-  <meta itemprop="wordCount" content="660">
+  <meta itemprop="name" content="How Does DESeq2 Perform Normalization?">
+  <meta itemprop="description" content="Differential gene expression (DGE) analysis requires correcting for two major sources of technical variation:
+Library size differences (sequencing depth) Compositional bias between samples Why is gene length normalization not needed? Gene length normalization (like normalization methods in RPKM or TPM) is not required for DGE analysis because:
+DGE compares the same gene across conditions, not different genes within a sample and the same gene has the same length in different samples. What is compositional bias and why does it matter? Compositional bias occurs when a subset of genes is highly expressed in one condition or tissue but not in others.">
+  <meta itemprop="datePublished" content="2025-12-10T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-12-10T00:00:00+00:00">
+  <meta itemprop="wordCount" content="492">
   <meta itemprop="keywords" content="Normalization,DESeq2,DGE,RNA-Seq,Bulk-RNA"><meta property="og:url" content="https://nasimbio.github.io/bioinfo-blog/post/deseq2-normalization-explained/">
   <meta property="og:site_name" content="Bioinformatics Blogs By Nasim">
-  <meta property="og:title" content="How Does edgeR Perform Normalization?">
-  <meta property="og:description" content="How Does edgeR Perform Normalization? In my previous blog post, I explained why library size and compositional bias must be accounted for in differential gene expression (DGE) analysis.
-edgeR, similar to DESeq2, is a widely used tool for DGE analysis. In this post, I explain how edgeR performs normalization step by step, focusing on its default method: TMM (Trimmed Mean of M values).
-Step-by-step normalization in edgeR 1. Remove genes with zero expression in all samples Genes that have zero counts across all samples do not contain useful information and would lead to undefined log ratios. These genes are therefore excluded from the normalization procedure.">
+  <meta property="og:title" content="How Does DESeq2 Perform Normalization?">
+  <meta property="og:description" content="Differential gene expression (DGE) analysis requires correcting for two major sources of technical variation:
+Library size differences (sequencing depth) Compositional bias between samples Why is gene length normalization not needed? Gene length normalization (like normalization methods in RPKM or TPM) is not required for DGE analysis because:
+DGE compares the same gene across conditions, not different genes within a sample and the same gene has the same length in different samples. What is compositional bias and why does it matter? Compositional bias occurs when a subset of genes is highly expressed in one condition or tissue but not in others.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
-    <meta property="article:published_time" content="2025-12-19T00:00:00+00:00">
-    <meta property="article:modified_time" content="2025-12-19T00:00:00+00:00">
+    <meta property="article:published_time" content="2025-12-10T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-12-10T00:00:00+00:00">
     <meta property="article:tag" content="Normalization">
     <meta property="article:tag" content="DESeq2">
     <meta property="article:tag" content="DGE">
@@ -118,10 +124,10 @@ Step-by-step normalization in edgeR 1. Remove genes with zero expression in all 
     <meta property="article:tag" content="Bulk-RNA">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="How Does edgeR Perform Normalization?">
-  <meta name="twitter:description" content="How Does edgeR Perform Normalization? In my previous blog post, I explained why library size and compositional bias must be accounted for in differential gene expression (DGE) analysis.
-edgeR, similar to DESeq2, is a widely used tool for DGE analysis. In this post, I explain how edgeR performs normalization step by step, focusing on its default method: TMM (Trimmed Mean of M values).
-Step-by-step normalization in edgeR 1. Remove genes with zero expression in all samples Genes that have zero counts across all samples do not contain useful information and would lead to undefined log ratios. These genes are therefore excluded from the normalization procedure.">
+  <meta name="twitter:title" content="How Does DESeq2 Perform Normalization?">
+  <meta name="twitter:description" content="Differential gene expression (DGE) analysis requires correcting for two major sources of technical variation:
+Library size differences (sequencing depth) Compositional bias between samples Why is gene length normalization not needed? Gene length normalization (like normalization methods in RPKM or TPM) is not required for DGE analysis because:
+DGE compares the same gene across conditions, not different genes within a sample and the same gene has the same length in different samples. What is compositional bias and why does it matter? Compositional bias occurs when a subset of genes is highly expressed in one condition or tissue but not in others.">
 
   <link rel="canonical" href="https://nasimbio.github.io/bioinfo-blog/post/deseq2-normalization-explained/" />
 </head>
@@ -218,106 +224,90 @@ Step-by-step normalization in edgeR 1. Remove genes with zero expression in all 
       class="prose prose-neutral dark:prose-invert relative mx-auto min-h-[calc(100vh-9rem)] max-w-(--w) px-8 pt-14 pb-16"
     ><article>
   <header class="mb-14">
-    <h1 class="my-0! pb-2.5">How Does edgeR Perform Normalization?</h1><div class="text-xs antialiased opacity-60"><time>Dec 19, 2025</time><span class="mx-1">&middot;</span>
+    <h1 class="my-0! pb-2.5">How Does DESeq2 Perform Normalization?</h1><div class="text-xs antialiased opacity-60"><time>Dec 10, 2025</time><span class="mx-1">&middot;</span>
       <span>Nasim Rahmatpour</span></div></header>
 
-  <section>
-
-
-<div id="how-does-edger-perform-normalization" class="section level2">
-<h2>How Does edgeR Perform Normalization?</h2>
-<p>In my previous blog post, I explained why <strong>library size</strong> and <strong>compositional bias</strong> must be accounted for in differential gene expression (DGE) analysis.<br />
-<strong>edgeR</strong>, similar to <strong>DESeq2</strong>, is a widely used tool for DGE analysis. In this post, I explain <strong>how edgeR performs normalization step by step</strong>, focusing on its default method: <strong>TMM (Trimmed Mean of M values)</strong>.</p>
-<hr />
-</div>
-<div id="step-by-step-normalization-in-edger" class="section level2">
-<h2>Step-by-step normalization in edgeR</h2>
-<div id="remove-genes-with-zero-expression-in-all-samples" class="section level3">
-<h3>1. Remove genes with zero expression in all samples</h3>
-<p>Genes that have zero counts across all samples do not contain useful information and would lead to undefined log ratios. These genes are therefore excluded from the normalization procedure.</p>
-<hr />
-</div>
-<div id="pick-one-sample-as-the-reference" class="section level3">
-<h3>2. Pick one sample as the reference</h3>
-<p>A reference sample is selected and used to normalize all other samples against it.</p>
-<p>A <strong>good reference sample</strong> is the most <em>average</em> sample, meaning its expression distribution is representative of the dataset.<br />
-A <strong>bad reference sample</strong> would be an extreme one, such as a sample with very small library size or one dominated by a few highly expressed genes.</p>
-<p>In practice, edgeR selects a reference sample through the following steps:</p>
+  <section><p>Differential gene expression (DGE) analysis requires correcting for two major
+sources of technical variation:</p>
+<ol>
+<li><strong>Library size differences</strong> (sequencing depth)</li>
+<li><strong>Compositional bias</strong> between samples</li>
+</ol>
+<hr>
+<h2 id="why-is-gene-length-normalization-not-needed">Why is gene length normalization <em>not</em> needed?</h2>
+<p>Gene length normalization (like normalization methods in RPKM or TPM) is <strong>not required</strong> for
+DGE analysis because:</p>
 <ul>
-<li>Scale each sample by its total library size (divide each gene count by the total counts of that sample).</li>
-<li>For each sample, calculate the <strong>75th percentile</strong> of the scaled counts.The value that 75% of scaled data are equal or less than that.</li>
-<li>Compute the average of these 75th percentiles across all samples.</li>
-<li>Select the reference sample whose 75th percentile is <strong>closest to this average</strong>.</li>
+<li>DGE compares the <strong>same gene across conditions</strong>, not different genes within a sample and the same gene has the same length in different samples.</li>
 </ul>
-<p>This procedure helps identify a sample with a typical expression distribution.</p>
-<hr />
-</div>
-<div id="select-genes-for-calculating-the-scaling-factor" class="section level3">
-<h3>3. Select genes for calculating the scaling factor</h3>
-<p><em>(Done separately for each sample relative to the reference)</em></p>
-<p>Different samples may use different sets of genes to derive their scaling factors. The goal is to use genes with the <strong>least bias</strong>, assuming that most genes are not differentially expressed.</p>
-<div id="a-calculate-log2-fold-change-m-value" class="section level4">
-<h4>a) Calculate log2 fold change (M value)</h4>
-<p>For each gene, calculate the <strong>log2 fold change (M value)</strong> between the sample and the reference.<br />
-Genes with zero counts in either the sample or the reference are removed to avoid infinite values.</p>
-</div>
-<div id="b-calculate-average-expression-a-value" class="section level4">
-<h4>b) Calculate average expression (A value)</h4>
-<p>For each gene, calculate the <strong>average expression (A value)</strong> across the sample and the reference.<br />
-This step helps identify genes with very high or very low expression.</p>
-</div>
-<div id="c-sort-genes" class="section level4">
-<h4>c) Sort genes</h4>
-<p>Genes are sorted based on:
-- <strong>M values</strong> (log fold changes)
-- <strong>A values</strong> (average expression)</p>
-</div>
-<div id="d-apply-trimming" class="section level4">
-<h4>d) Apply trimming</h4>
+<hr>
+<h2 id="what-is-compositional-bias-and-why-does-it-matter">What is compositional bias and why does it matter?</h2>
+<p>Compositional bias occurs when a subset of genes is <strong>highly expressed in one
+condition or tissue but not in others</strong>.</p>
+<p>For example:</p>
 <ul>
-<li>Remove genes with extreme M values (typically the top and bottom ~30%), which are likely biased or truly differentially expressed.</li>
-<li>Remove genes with extreme A values (typically the top and bottom ~5%), representing very highly or very lowly expressed genes.</li>
+<li>In one tissue, a small set of tissue-specific genes may dominate the read counts.</li>
+<li>Because sequencing depth is fixed, this forces other genes to receive fewer reads,
+even if their true expression has not changed.</li>
+<li>Simply scaling by total library size would make many genes appear falsely
+down-regulated.</li>
 </ul>
-</div>
-<div id="e-select-remaining-genes" class="section level4">
-<h4>e) Select remaining genes</h4>
-<p>The genes that remain after trimming are assumed to be unbiased and are used to estimate the scaling factor.</p>
-</div>
-<div id="f-repeat-for-each-sample" class="section level4">
-<h4>f) Repeat for each sample</h4>
-<p>This gene selection and trimming process is performed independently for each sample relative to the reference.</p>
-<hr />
-</div>
-</div>
-<div id="calculate-the-weighted-trimmed-mean-of-log2-ratios" class="section level3">
-<h3>4. Calculate the weighted trimmed mean of log2 ratios</h3>
-<p>Using the remaining genes, edgeR calculates a <strong>weighted trimmed mean of M values</strong>, which is the core idea behind <strong>TMM (Trimmed Mean of M values)</strong>.</p>
-<p>Genes with higher counts receive more weight because they provide more reliable information, while low-count genes contribute less.</p>
-<hr />
-</div>
-<div id="convert-from-log2-scale-to-normal-scale" class="section level3">
-<h3>5. Convert from log2 scale to normal scale</h3>
-<p>The weighted average of log2 ratios is converted back to the normal scale, producing the <strong>normalization (scaling) factor</strong> for that sample.</p>
-<hr />
-</div>
-<div id="repeat-for-all-samples" class="section level3">
-<h3>6. Repeat for all samples</h3>
-<p>This entire procedure is repeated for every sample relative to the reference sample.</p>
-<hr />
-</div>
-<div id="center-scaling-factors-around-1" class="section level3">
-<h3>7. Center scaling factors around 1</h3>
-<p>Finally, all scaling factors are divided by their <strong>geometric mean</strong>, ensuring that the normalization does not change the overall scale of the data across samples.</p>
-<hr />
-</div>
-</div>
-<div id="summary" class="section level2">
-<h2>Summary</h2>
-<p>edgeR’s TMM normalization corrects for both <strong>library size differences</strong> and <strong>compositional bias</strong> by estimating sample-specific scaling factors, which are later incorporated as offsets in the negative binomial model used for differential expression testing.</p>
-<hr />
-<p>🔍 Watch this video by Josh Starmer, steps are explained clearly:
-<a href="https://www.youtube.com/watch?v=Wdt6jdi-NQo&amp;list=PLblh5JKOoLUJo2Q6xK4tZElbIvAACEykp&amp;index=12" class="uri">https://www.youtube.com/watch?v=Wdt6jdi-NQo&amp;list=PLblh5JKOoLUJo2Q6xK4tZElbIvAACEykp&amp;index=12</a></p>
-</div>
+<p>DESeq2 normalization is specifically designed to correct for <strong>both library size
+differences and compositional bias</strong>. To adjust for library size and compositional bias, it calculates a size factor.</p>
+<hr>
+<h2 id="deseq2-normalization-the-median-of-ratios-method">DESeq2 normalization: the median-of-ratios method</h2>
+<p>DESeq2 estimates a <strong>size factor</strong> for each sample using the
+<em>median-of-ratios</em> approach. These size factors are later used to normalize raw counts.</p>
+<hr>
+<h2 id="step-by-step-explanation">Step-by-step explanation</h2>
+<h3 id="1-log-transform-raw-counts">1. Log-transform raw counts</h3>
+<p>For each gene in each sample, DESeq2 considers the natural logarithm of the raw
+read counts.</p>
+<hr>
+<h3 id="2-compute-a-pseudo-reference-using-the-geometric-mean">2. Compute a pseudo-reference using the geometric mean</h3>
+<p>Then it calculates the average of logs for each gene across different samples. This is called <strong>geometric mean</strong>. This value represents a pseudo-reference expression level for that gene.</p>
+<hr>
+<h3 id="3-exclude-genes-with-zero-counts">3. Exclude genes with zero counts</h3>
+<p>Genes that have Infinity after log transformation (or zero counts before log transformation) in one or more samples are excluded for downstram analysis.</p>
+<hr>
+<h3 id="4-compute-log-ratios">4. Compute log ratios</h3>
+<p>For each gene <em>g</em> in each sample <em>s</em>, DESeq2 computes the log ratio:</p>
+<p><code>log(count_{g,s}) - log(geoMean_g)</code></p>
+<hr>
+<h3 id="5-take-the-median-across-genes">5. Take the median across genes</h3>
+<p>For each sample, DESeq2 takes the <strong>median</strong> of all gene-level log ratios.
+This single value summarizes the overall shift of the sample relative
+to the reference.</p>
+<hr>
+<h3 id="6-convert-to-a-size-factor">6. Convert to a size factor</h3>
+<p>Convert the median ratio to normal numbers. The median log ratio is exponentiated
+to obtain the <strong>size factor</strong> for that sample:</p>
+<p><code>size_factor_s = exp(median_log_ratio_s)</code></p>
+<p>Here:</p>
+<ul>
+<li><code>size_factor_s</code> is the size factor for sample <em>s</em></li>
+<li><code>median_log_ratio_s</code> is the median log ratio for sample <em>s</em></li>
+</ul>
+<hr>
+<h3 id="7-normalize-the-counts">7. Normalize the counts</h3>
+<p>Finally, raw counts are normalized by dividing by the sample-specific size factor:</p>
+<p><code>normalized_count_{g,s} = raw_count_{g,s} / size_factor_s</code></p>
+<p>These normalized counts are then used for downstream modeling and differential
+expression testing.</p>
+<hr>
+<h2 id="why-this-approach-works-well">Why this approach works well</h2>
+<p>The median-of-ratios method is robust because:</p>
+<ul>
+<li><strong>Geometric means</strong> reduce the influence of very highly expressed genes.</li>
+<li><strong>Medians</strong> are resistant to outliers.</li>
+<li>Normalization is driven by <strong>moderately expressed genes</strong> like <strong>housekeeping genes</strong>, which better
+represent global expression behavior.</li>
+</ul>
+<p>This makes DESeq2’s normalization particularly effective at correcting
+compositional bias while preserving true biological differences.</p>
+<hr>
+<p>🔍 For better visualization examples, see this link:<br>
+<em>(<a href="https://hbctraining.github.io/DGE_workshop/lessons/02_DGE_count_normalization.html">https://hbctraining.github.io/DGE_workshop/lessons/02_DGE_count_normalization.html</a>)</em></p>
 </section>
 
   <footer class="mt-12 flex flex-wrap"><a
@@ -348,8 +338,8 @@ This step helps identify genes with very high or very low expression.</p>
     class="mt-24 flex overflow-hidden rounded-xl bg-black/[3%] text-lg leading-[1.2]! *:flex *:w-1/2 *:items-center *:p-5 *:font-medium *:no-underline dark:bg-white/[8%] [&>*:hover]:bg-black/[2%] dark:[&>*:hover]:bg-white/[3%]"
   ><a
       class="justify-end pl-3 ltr:ml-auto rtl:mr-auto"
-      href="https://nasimbio.github.io/bioinfo-blog/post/deseq2-normalization-explained/"
-      ><span>How Does DESeq2 Perform Normalization?</span><span class="ltr:ml-1.5 rtl:mr-1.5">→</span></a
+      href="https://nasimbio.github.io/bioinfo-blog/post/bulk-rnaseq-normalization-methods/"
+      ><span>Bulk RNA-seq Normalization Methods</span><span class="ltr:ml-1.5 rtl:mr-1.5">→</span></a
     ></nav></article></main><footer
   class="mx-auto flex h-[4.5rem] max-w-(--w) items-center px-8 text-xs tracking-wider uppercase opacity-60"
 >
