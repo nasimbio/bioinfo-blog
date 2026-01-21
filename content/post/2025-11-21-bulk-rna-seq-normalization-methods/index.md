@@ -83,7 +83,7 @@ Tools such as **DESeq2**, **edgeR**, and **limma/voom** solve this by:
 
 ## Why these methods are not appropriate for single-cell RNA-seq
 
-These normalization methods correct only for sequencing depth and sometimes gene length. But single-cell RNA-seq data behave very differently. For example, TPM forces every cell to have the same total expression which is incorrect for single-cell biology.
+These normalization methods correct only for sequencing depth and sometimes gene length. But single-cell RNA-seq data behave very differently. 
 
 ### ✔️ In bulk RNA-seq
 
@@ -116,8 +116,7 @@ Variation in library size comes from:
 3. mRNA loss during lysis  
 4. Sequencing depth differences  
 
-Because of this, the observed library size in a single cell is **not** a reliable measure of true RNA content. TPM (and similar methods) wrongly force every cell to have the same total expression, which:
-removes true biological differences, amplifies technical noise and distorts downstream analyses (clustering, trajectories, DE).
+Because of this, the observed library size in a single cell is **not** a reliable measure of true RNA content. Those approaches (CPM, RPKM/FPKM, TPM) are generally not appropriate for single-cell RNA-seq, because in single-cell data the observed library size varies due to a mix of technical factors and real biological differences. In bulk RNA-seq, these cell-to-cell biological differences are averaged across millions of cells, and extraction/capture efficiency tends to be more consistent across samples, so library size is more tightly linked to sequencing depth. As a result, bulk normalization methods are not appropriate for single-cell analyses.
 
 ---
 
