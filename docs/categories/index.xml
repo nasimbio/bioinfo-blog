@@ -6,8 +6,15 @@
     <description>Recent content in Categories on Bioinformatics Blogs By Nasim</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 19 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 22 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://nasimbio.github.io/bioinfo-blog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Single-Cell RNA-Seq</title>
+      <link>https://nasimbio.github.io/bioinfo-blog/categories/single-cell-rna-seq/</link>
+      <pubDate>Thu, 22 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://nasimbio.github.io/bioinfo-blog/categories/single-cell-rna-seq/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Normalization</title>
       <link>https://nasimbio.github.io/bioinfo-blog/categories/normalization/</link>

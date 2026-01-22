@@ -1,0 +1,332 @@
+<!doctype html>
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg:#faf8f1"
+  lang="en-us"
+  dir="ltr"
+><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Single-Cell Normalization Methods - Bioinformatics Blogs By Nasim</title>
+
+  
+  <meta name="theme-color" />
+
+  <meta name="description" content="In a previous blog post, I discussed common bulk RNA-seq normalization methods. Those approaches (CPM, RPKM/FPKM, TPM) are generally not appropriate for single-cell RNA-seq, because in single-cell data the observed library size varies due to a mix of:
+
+Technical factors (sequencing depth, capture efficiency, and many zeros/dropouts)
+Real biological differences (cell type, cell size, cell-cycle stage, activation/metabolic state)
+
+In bulk RNA-seq, these cell-to-cell differences are averaged across millions of cells, and extraction/capture efficiency tends to be more consistent across samples—so library size is more tightly linked to sequencing depth." />
+  <meta name="author" content="Nasim Rahmatpour" /><link rel="preload stylesheet" as="style" href="https://nasimbio.github.io/bioinfo-blog/main.min.css" />
+
+  
+  <link rel="preload" as="image" href="https://nasimbio.github.io/bioinfo-blog/theme.png" />
+
+  
+
+  <link rel="preload" as="image" href="https://nasimbio.github.io/bioinfo-blog/github.svg" /><link rel="preload" as="image" href="https://nasimbio.github.io/bioinfo-blog/linkedin.svg" />
+
+  <script
+    defer
+    src="https://nasimbio.github.io/bioinfo-blog/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+
+  
+  <link
+    rel="icon"
+    href="https://nasimbio.github.io/bioinfo-blog/favicon.ico"
+  />
+  <link
+    rel="apple-touch-icon"
+    href="https://nasimbio.github.io/bioinfo-blog/apple-touch-icon.png"
+  />
+
+  <meta name="generator" content="Hugo 0.152.2">
+  <meta itemprop="name" content="Single-Cell Normalization Methods">
+  <meta itemprop="description" content="In a previous blog post, I discussed common bulk RNA-seq normalization methods. Those approaches (CPM, RPKM/FPKM, TPM) are generally not appropriate for single-cell RNA-seq, because in single-cell data the observed library size varies due to a mix of:
+Technical factors (sequencing depth, capture efficiency, and many zeros/dropouts) Real biological differences (cell type, cell size, cell-cycle stage, activation/metabolic state) In bulk RNA-seq, these cell-to-cell differences are averaged across millions of cells, and extraction/capture efficiency tends to be more consistent across samples—so library size is more tightly linked to sequencing depth.">
+  <meta itemprop="datePublished" content="2026-01-22T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-01-22T00:00:00+00:00">
+  <meta itemprop="wordCount" content="1001">
+  <meta itemprop="keywords" content="Normalization,RNA-Seq,Spatial Transcriptomics,ATAC-Seq,ADT,Bioinformatics,Single-Cell"><meta property="og:url" content="https://nasimbio.github.io/bioinfo-blog/post/single-cell-normalization-methods/">
+  <meta property="og:site_name" content="Bioinformatics Blogs By Nasim">
+  <meta property="og:title" content="Single-Cell Normalization Methods">
+  <meta property="og:description" content="In a previous blog post, I discussed common bulk RNA-seq normalization methods. Those approaches (CPM, RPKM/FPKM, TPM) are generally not appropriate for single-cell RNA-seq, because in single-cell data the observed library size varies due to a mix of:
+Technical factors (sequencing depth, capture efficiency, and many zeros/dropouts) Real biological differences (cell type, cell size, cell-cycle stage, activation/metabolic state) In bulk RNA-seq, these cell-to-cell differences are averaged across millions of cells, and extraction/capture efficiency tends to be more consistent across samples—so library size is more tightly linked to sequencing depth.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2026-01-22T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-01-22T00:00:00+00:00">
+    <meta property="article:tag" content="Normalization">
+    <meta property="article:tag" content="RNA-Seq">
+    <meta property="article:tag" content="Spatial Transcriptomics">
+    <meta property="article:tag" content="ATAC-Seq">
+    <meta property="article:tag" content="ADT">
+    <meta property="article:tag" content="Bioinformatics">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Single-Cell Normalization Methods">
+  <meta name="twitter:description" content="In a previous blog post, I discussed common bulk RNA-seq normalization methods. Those approaches (CPM, RPKM/FPKM, TPM) are generally not appropriate for single-cell RNA-seq, because in single-cell data the observed library size varies due to a mix of:
+Technical factors (sequencing depth, capture efficiency, and many zeros/dropouts) Real biological differences (cell type, cell size, cell-cycle stage, activation/metabolic state) In bulk RNA-seq, these cell-to-cell differences are averaged across millions of cells, and extraction/capture efficiency tends to be more consistent across samples—so library size is more tightly linked to sequencing depth.">
+
+  <link rel="canonical" href="https://nasimbio.github.io/bioinfo-blog/post/single-cell-normalization-methods/" />
+</head>
+<body
+    class="bg-(--bg) text-black antialiased duration-200 ease-out [-webkit-tap-highlight-color:transparent] dark:text-white"
+  ><header
+  class="mx-auto flex h-[4.5rem] max-w-(--w) px-8 whitespace-nowrap lg:justify-center"
+>
+  <div class="relative z-50 flex items-center ltr:mr-auto rtl:ml-auto">
+    <a
+      class="-translate-y-[1px] text-2xl font-medium"
+      href="https://nasimbio.github.io/bioinfo-blog/"
+      >Bioinformatics Blogs By Nasim</a
+    >
+    <div
+      class="btn-dark text-[0px] ltr:ml-4 rtl:mr-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden ltr:-mr-8 rtl:-ml-8"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full flex-col justify-center bg-(--bg) pb-16 duration-200 select-none lg:static lg:h-auto lg:flex-row lg:bg-transparent! lg:pb-0 lg:transition-none"
+  ><nav
+      class="mt-12 flex justify-center space-x-10 lg:mt-0 lg:items-center ltr:lg:ml-14 rtl:space-x-reverse rtl:lg:mr-14 dark:invert"
+    >
+      <a
+        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/nasimbio"
+        target="_blank"
+        rel="me"
+      >github</a>
+      <a
+        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./linkedin.svg)"
+        href="https://linkedin.com/in/nasimrahmatpour"
+        target="_blank"
+        rel="me"
+      >linkedin</a>
+    </nav>
+  </div>
+</header>
+<main
+      class="prose prose-neutral dark:prose-invert relative mx-auto min-h-[calc(100vh-9rem)] max-w-(--w) px-8 pt-14 pb-16"
+    ><article>
+  <header class="mb-14">
+    <h1 class="my-0! pb-2.5">Single-Cell Normalization Methods</h1><div class="text-xs antialiased opacity-60"><time>Jan 22, 2026</time><span class="mx-1">&middot;</span>
+      <span>Nasim Rahmatpour</span></div></header>
+
+  <section><p>In a previous blog post, I discussed common <strong>bulk RNA-seq normalization</strong> methods. Those approaches (CPM, RPKM/FPKM, TPM) are generally <strong>not appropriate for single-cell RNA-seq</strong>, because in single-cell data the observed library size varies due to a mix of:</p>
+<ul>
+<li><strong>Technical factors</strong> (sequencing depth, capture efficiency, and many zeros/dropouts)</li>
+<li><strong>Real biological differences</strong> (cell type, cell size, cell-cycle stage, activation/metabolic state)</li>
+</ul>
+<p>In <strong>bulk RNA-seq</strong>, these cell-to-cell differences are averaged across millions of cells, and extraction/capture efficiency tends to be more consistent across samples—so library size is more tightly linked to sequencing depth.</p>
+<p>In addition, <strong>TPM includes gene-length correction</strong>, which is largely irrelevant for <strong>UMI-based scRNA-seq</strong>, and TPM-style relative scaling can introduce <strong>compositional bias</strong>.</p>
+<p>Below, I’ll walk through several common normalization methods used in <strong>single-cell and spatial workflows</strong> (and other related assays) in <strong>Seurat</strong>, and explain what each method is designed to address.</p>
+<hr>
+<h2 id="1--lognormalize-scrnasnrna">1) 🧾 LogNormalize (scRNA/snRNA)</h2>
+<p><strong>LogNormalize</strong> is a commonly used normalization method for scRNA/snRNA-seq in Seurat. For each cell, it divides each gene’s raw count by the <strong>total counts (library size)</strong> in that cell, multiplies by a fixed <strong>scale factor</strong> (default = 10,000), and then applies a <strong>log1p transformation</strong>.</p>
+<h3 id="-what-problems-does-it-target">✅ What problems does it target?</h3>
+<ul>
+<li><strong>Sequencing depth / library size differences:</strong> reduces the effect of cells having different total UMIs, so cells are compared based on <strong>relative abundance</strong> rather than raw counts.</li>
+<li><strong>Global scaling effects (partially):</strong> because low capture efficiency often results in low total UMIs, rescaling can reduce global differences driven by cell-wide totals.</li>
+</ul>
+<h3 id="-what-does-it-not-solve">❌ What does it NOT solve?</h3>
+<ul>
+<li><strong>Dropouts / excess zeros:</strong> it does not model the count-generating process, so it cannot distinguish between a gene that is truly off vs. a gene that is expressed but missed (technical dropout).</li>
+<li><strong>Mean–variance effects / dominance of highly expressed genes:</strong> even after log normalization, highly expressed genes can still drive much of the variation. This is why workflows typically follow with <strong>HVG selection</strong> and <strong>scaling/centering</strong> before PCA.</li>
+</ul>
+<hr>
+<h2 id="2--sctransform-model-based-normalization--variance-stabilization">2) 📈 SCTransform (model-based normalization + variance stabilization)</h2>
+<p><strong>SCTransform</strong> is a <strong>model-based normalization</strong> and <strong>variance-stabilization</strong> method (commonly used for scRNA and also widely used in spatial transcriptomics workflows). Instead of simply dividing by total counts, it fits a <strong>regularized Negative Binomial (NB) regression</strong> for each gene across cells. The expected count depends on the cell’s depth (typically <strong>total UMI</strong>) and the gene’s baseline behavior learned across cells.</p>
+<p>From this fitted model, it computes <strong>Pearson residuals</strong>, which behave roughly like <strong>z-scores</strong>: they reflect how much the observed count deviates from what is expected <strong>after accounting for depth</strong>, scaled by expected variability.</p>
+<p><strong>In simpler terms:</strong> SCTransform asks:</p>
+<blockquote>
+<p>“Given this cell’s depth and this gene’s typical behavior, what count should I expect?”<br>
+Then it converts the observed value into a <em>standardized deviation</em> from that expectation.</p>
+</blockquote>
+<h3 id="-what-problems-does-it-target-1">✅ What problems does it target?</h3>
+<ul>
+<li><strong>Sequencing depth / global library size effects:</strong> depth is modeled directly, so counts are interpreted relative to what is expected for that cell’s UMI total.</li>
+<li><strong>Global capture-related scaling (partially):</strong> if a cell has low capture efficiency, it often has low total UMIs; modeling depth reduces the impact of that global shift.</li>
+<li><strong>Mean–variance effects:</strong> residuals are variance-stabilized, so highly expressed genes don’t automatically dominate PCA just because they have larger raw variance.</li>
+<li><strong>Many zeros / dropouts (partially):</strong> SCTransform does not remove zeros, but it makes embeddings less sensitive to random dropouts:
+<ul>
+<li>a zero that is <strong>expected</strong> (low gene + low depth) is treated as <strong>not informative</strong></li>
+<li>a zero that is <strong>unexpected</strong> (high depth + usually detected) is treated as <strong>more surprising</strong></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="-note-important-tradeoff">⚠️ Note (important tradeoff)</h3>
+<p>These normalization methods involve a tradeoff: they reduce technical variation driven by library size, but they can also <strong>attenuate real biology</strong> correlated with total UMIs (e.g., cell size, activation, or cell-cycle state).</p>
+<p>SCTransform additionally uses a model to downweight “expected zeros,” but it still cannot perfectly label a zero as <strong>technical dropout</strong> vs. <strong>true biological absence</strong> for a single gene in a single cell.</p>
+<hr>
+<p>Next, let’s briefly cover two approaches commonly used for <strong>non-RNA assays</strong> in Seurat/Signac-style workflows:</p>
+<ul>
+<li><strong>TF-IDF</strong> for scATAC-seq</li>
+<li><strong>CLR</strong> for ADT (CITE-seq)</li>
+</ul>
+<hr>
+<h2 id="3--tf-idf-scatac-seq">3) 🧬 TF-IDF (scATAC-seq)</h2>
+<p><strong>TF-IDF</strong> is applied to <strong>peak × cell</strong> accessibility matrices. These matrices are typically much sparser than scRNA-seq data and often behave close to <strong>binary</strong> (a peak is detected or not detected in a given cell).</p>
+<h3 id="what-it-does">What it does</h3>
+<ul>
+<li><strong>TF (term frequency):</strong> normalizes each cell by its total number of accessible fragments/peaks → controls <strong>per-cell depth (library size)</strong>.</li>
+<li><strong>IDF (inverse document frequency):</strong> downweights peaks accessible in many cells (ubiquitous “open everywhere” peaks) and upweights peaks accessible in fewer cells (more informative peaks).</li>
+<li>The TF-IDF matrix is then used as input for <strong>SVD/LSI</strong>, producing a low-dimensional embedding for clustering and visualization.</li>
+</ul>
+<h3 id="-what-problems-does-it-target-2">✅ What problems does it target?</h3>
+<ul>
+<li><strong>Per-cell depth / library size differences</strong></li>
+<li><strong>Dominance of ubiquitous peaks</strong> that provide little clustering signal</li>
+<li>Makes downstream embedding more robust to sparsity by emphasizing informative non-zero signals (without imputation)</li>
+</ul>
+<h3 id="-what-does-it-not-solve-1">❌ What does it NOT solve?</h3>
+<ul>
+<li>TF-IDF does <strong>not</strong> impute missing peaks and cannot determine whether a zero is due to technical dropout or truly closed chromatin. It reweights the observed signals to improve downstream embedding.</li>
+</ul>
+<hr>
+<h2 id="4--clr-centered-log-ratio-for-adt-cite-seq">4) 🧪 CLR (Centered Log Ratio) for ADT (CITE-seq)</h2>
+<p><strong>CLR</strong> is commonly used for <strong>ADT</strong> (protein) counts. ADT behaves differently from RNA: it often has large dynamic range, background signal, and strong <strong>compositional effects</strong> (if one protein is very high, others can look lower simply because totals are constrained).</p>
+<h3 id="how-it-works-conceptually">How it works (conceptually)</h3>
+<ul>
+<li>Add a <strong>pseudocount</strong> (e.g., +1) so zeros don’t break the log transform.</li>
+<li>For each cell, compute a baseline across proteins using the <strong>geometric mean</strong>.</li>
+<li>Convert each protein value into a <strong>log-ratio</strong> relative to that baseline.</li>
+</ul>
+<p>So CLR turns ADT into <strong>relative enrichment</strong> values rather than raw counts.</p>
+<h3 id="-what-problems-does-it-target-3">✅ What problems does it target?</h3>
+<ul>
+<li><strong>Compositional bias (main target)</strong></li>
+<li><strong>Global per-cell scaling / depth effects (partially)</strong></li>
+<li>Helps stabilize dynamic range for downstream PCA/WNN</li>
+</ul>
+<h3 id="-what-does-it-not-solve-2">❌ What does it NOT solve?</h3>
+<ul>
+<li><strong>Ambient/background antibody signal:</strong> CLR does not explicitly subtract background (methods like <strong>DSB</strong> are better for that).</li>
+<li>CLR does not model dropout like SCTransform does; a zero remains a zero (after pseudocount it becomes small).</li>
+</ul>
+<hr>
+</section>
+
+  <footer class="mt-12 flex flex-wrap"><a
+      class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://nasimbio.github.io/bioinfo-blog/tags/normalization"
+      >Normalization</a
+    ><a
+      class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://nasimbio.github.io/bioinfo-blog/tags/rna-seq"
+      >RNA-seq</a
+    ><a
+      class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://nasimbio.github.io/bioinfo-blog/tags/spatial-transcriptomics"
+      >Spatial Transcriptomics</a
+    ><a
+      class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://nasimbio.github.io/bioinfo-blog/tags/atac-seq"
+      >ATAC-seq</a
+    ><a
+      class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://nasimbio.github.io/bioinfo-blog/tags/adt"
+      >ADT</a
+    ><a
+      class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://nasimbio.github.io/bioinfo-blog/tags/bioinformatics"
+      >Bioinformatics</a
+    ><a
+      class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://nasimbio.github.io/bioinfo-blog/tags/single-cell"
+      >Single-cell</a
+    ></footer><nav
+    class="mt-24 flex overflow-hidden rounded-xl bg-black/[3%] text-lg leading-[1.2]! *:flex *:w-1/2 *:items-center *:p-5 *:font-medium *:no-underline dark:bg-white/[8%] [&>*:hover]:bg-black/[2%] dark:[&>*:hover]:bg-white/[3%]"
+  ><a
+      class="justify-end pl-3 ltr:ml-auto rtl:mr-auto"
+      href="https://nasimbio.github.io/bioinfo-blog/post/edger-normalization-explained/"
+      ><span>How Does edgeR Perform Normalization?</span><span class="ltr:ml-1.5 rtl:mr-1.5">→</span></a
+    ></nav></article></main><footer
+  class="mx-auto flex h-[4.5rem] max-w-(--w) items-center px-8 text-xs tracking-wider uppercase opacity-60"
+>
+  <div class="mr-auto">&copy;2026
+    <a class="link" href="https://nasimbio.github.io/bioinfo-blog/">Bioinformatics Blogs By Nasim</a></div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >powered by hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >hugo-paper</a
+  >
+</footer>
+</body>
+</html>
