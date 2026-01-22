@@ -30,7 +30,7 @@
 Technical factors (sequencing depth, capture efficiency, and many zeros/dropouts)
 Real biological differences (cell type, cell size, cell-cycle stage, activation/metabolic state)
 
-In bulk RNA-seq, these cell-to-cell differences are averaged across millions of cells, and extraction/capture efficiency tends to be more consistent across samples—so library size is more tightly linked to sequencing depth." />
+In bulk RNA-seq, these cell-to-cell differences are averaged across millions of cells, and extraction/capture efficiency tends to be more consistent across samples, so library size is more tightly linked to sequencing depth." />
   <meta name="author" content="Nasim Rahmatpour" /><link rel="preload stylesheet" as="style" href="https://nasimbio.github.io/bioinfo-blog/main.min.css" />
 
   
@@ -59,15 +59,15 @@ In bulk RNA-seq, these cell-to-cell differences are averaged across millions of 
   <meta name="generator" content="Hugo 0.152.2">
   <meta itemprop="name" content="Single-Cell Normalization Methods">
   <meta itemprop="description" content="In a previous blog post, I discussed common bulk RNA-seq normalization methods. Those approaches (CPM, RPKM/FPKM, TPM) are generally not appropriate for single-cell RNA-seq, because in single-cell data the observed library size varies due to a mix of:
-Technical factors (sequencing depth, capture efficiency, and many zeros/dropouts) Real biological differences (cell type, cell size, cell-cycle stage, activation/metabolic state) In bulk RNA-seq, these cell-to-cell differences are averaged across millions of cells, and extraction/capture efficiency tends to be more consistent across samples—so library size is more tightly linked to sequencing depth.">
+Technical factors (sequencing depth, capture efficiency, and many zeros/dropouts) Real biological differences (cell type, cell size, cell-cycle stage, activation/metabolic state) In bulk RNA-seq, these cell-to-cell differences are averaged across millions of cells, and extraction/capture efficiency tends to be more consistent across samples, so library size is more tightly linked to sequencing depth.">
   <meta itemprop="datePublished" content="2026-01-22T00:00:00+00:00">
   <meta itemprop="dateModified" content="2026-01-22T00:00:00+00:00">
-  <meta itemprop="wordCount" content="1001">
+  <meta itemprop="wordCount" content="1002">
   <meta itemprop="keywords" content="Normalization,RNA-Seq,Spatial Transcriptomics,ATAC-Seq,ADT,Bioinformatics,Single-Cell"><meta property="og:url" content="https://nasimbio.github.io/bioinfo-blog/post/single-cell-normalization-methods/">
   <meta property="og:site_name" content="Bioinformatics Blogs By Nasim">
   <meta property="og:title" content="Single-Cell Normalization Methods">
   <meta property="og:description" content="In a previous blog post, I discussed common bulk RNA-seq normalization methods. Those approaches (CPM, RPKM/FPKM, TPM) are generally not appropriate for single-cell RNA-seq, because in single-cell data the observed library size varies due to a mix of:
-Technical factors (sequencing depth, capture efficiency, and many zeros/dropouts) Real biological differences (cell type, cell size, cell-cycle stage, activation/metabolic state) In bulk RNA-seq, these cell-to-cell differences are averaged across millions of cells, and extraction/capture efficiency tends to be more consistent across samples—so library size is more tightly linked to sequencing depth.">
+Technical factors (sequencing depth, capture efficiency, and many zeros/dropouts) Real biological differences (cell type, cell size, cell-cycle stage, activation/metabolic state) In bulk RNA-seq, these cell-to-cell differences are averaged across millions of cells, and extraction/capture efficiency tends to be more consistent across samples, so library size is more tightly linked to sequencing depth.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
@@ -83,7 +83,7 @@ Technical factors (sequencing depth, capture efficiency, and many zeros/dropouts
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Single-Cell Normalization Methods">
   <meta name="twitter:description" content="In a previous blog post, I discussed common bulk RNA-seq normalization methods. Those approaches (CPM, RPKM/FPKM, TPM) are generally not appropriate for single-cell RNA-seq, because in single-cell data the observed library size varies due to a mix of:
-Technical factors (sequencing depth, capture efficiency, and many zeros/dropouts) Real biological differences (cell type, cell size, cell-cycle stage, activation/metabolic state) In bulk RNA-seq, these cell-to-cell differences are averaged across millions of cells, and extraction/capture efficiency tends to be more consistent across samples—so library size is more tightly linked to sequencing depth.">
+Technical factors (sequencing depth, capture efficiency, and many zeros/dropouts) Real biological differences (cell type, cell size, cell-cycle stage, activation/metabolic state) In bulk RNA-seq, these cell-to-cell differences are averaged across millions of cells, and extraction/capture efficiency tends to be more consistent across samples, so library size is more tightly linked to sequencing depth.">
 
   <link rel="canonical" href="https://nasimbio.github.io/bioinfo-blog/post/single-cell-normalization-methods/" />
 </head>
@@ -188,11 +188,11 @@ Technical factors (sequencing depth, capture efficiency, and many zeros/dropouts
 <li><strong>Technical factors</strong> (sequencing depth, capture efficiency, and many zeros/dropouts)</li>
 <li><strong>Real biological differences</strong> (cell type, cell size, cell-cycle stage, activation/metabolic state)</li>
 </ul>
-<p>In <strong>bulk RNA-seq</strong>, these cell-to-cell differences are averaged across millions of cells, and extraction/capture efficiency tends to be more consistent across samples—so library size is more tightly linked to sequencing depth.</p>
+<p>In <strong>bulk RNA-seq</strong>, these cell-to-cell differences are averaged across millions of cells, and extraction/capture efficiency tends to be more consistent across samples, so library size is more tightly linked to sequencing depth.</p>
 <p>In addition, <strong>TPM includes gene-length correction</strong>, which is largely irrelevant for <strong>UMI-based scRNA-seq</strong>, and TPM-style relative scaling can introduce <strong>compositional bias</strong>.</p>
 <p>Below, I’ll walk through several common normalization methods used in <strong>single-cell and spatial workflows</strong> (and other related assays) in <strong>Seurat</strong>, and explain what each method is designed to address.</p>
 <hr>
-<h2 id="1--lognormalize-scrnasnrna">1) 🧾 LogNormalize (scRNA/snRNA)</h2>
+<h2 id="1--lognormalize-scrnasnrna">1) 🧮 LogNormalize (scRNA/snRNA)</h2>
 <p><strong>LogNormalize</strong> is a commonly used normalization method for scRNA/snRNA-seq in Seurat. For each cell, it divides each gene’s raw count by the <strong>total counts (library size)</strong> in that cell, multiplies by a fixed <strong>scale factor</strong> (default = 10,000), and then applies a <strong>log1p transformation</strong>.</p>
 <h3 id="-what-problems-does-it-target">✅ What problems does it target?</h3>
 <ul>
@@ -205,17 +205,17 @@ Technical factors (sequencing depth, capture efficiency, and many zeros/dropouts
 <li><strong>Mean–variance effects / dominance of highly expressed genes:</strong> even after log normalization, highly expressed genes can still drive much of the variation. This is why workflows typically follow with <strong>HVG selection</strong> and <strong>scaling/centering</strong> before PCA.</li>
 </ul>
 <hr>
-<h2 id="2--sctransform-model-based-normalization--variance-stabilization">2) 📈 SCTransform (model-based normalization + variance stabilization)</h2>
+<h2 id="2--sctransform-model-based-normalization--variance-stabilization">2) 📊️ SCTransform (model-based normalization + variance stabilization)</h2>
 <p><strong>SCTransform</strong> is a <strong>model-based normalization</strong> and <strong>variance-stabilization</strong> method (commonly used for scRNA and also widely used in spatial transcriptomics workflows). Instead of simply dividing by total counts, it fits a <strong>regularized Negative Binomial (NB) regression</strong> for each gene across cells. The expected count depends on the cell’s depth (typically <strong>total UMI</strong>) and the gene’s baseline behavior learned across cells.</p>
 <p>From this fitted model, it computes <strong>Pearson residuals</strong>, which behave roughly like <strong>z-scores</strong>: they reflect how much the observed count deviates from what is expected <strong>after accounting for depth</strong>, scaled by expected variability.</p>
 <p><strong>In simpler terms:</strong> SCTransform asks:</p>
 <blockquote>
-<p>“Given this cell’s depth and this gene’s typical behavior, what count should I expect?”<br>
+<p>“Given this cell’s depth and this gene’s typical behavior, what count should I expect?”
 Then it converts the observed value into a <em>standardized deviation</em> from that expectation.</p>
 </blockquote>
 <h3 id="-what-problems-does-it-target-1">✅ What problems does it target?</h3>
 <ul>
-<li><strong>Sequencing depth / global library size effects:</strong> depth is modeled directly, so counts are interpreted relative to what is expected for that cell’s UMI total.</li>
+<li><strong>Sequencing depth / global library size effects:</strong> depth is modeled directly, so counts are interpreted relative to what is expected for that cell’s total UMI.</li>
 <li><strong>Global capture-related scaling (partially):</strong> if a cell has low capture efficiency, it often has low total UMIs; modeling depth reduces the impact of that global shift.</li>
 <li><strong>Mean–variance effects:</strong> residuals are variance-stabilized, so highly expressed genes don’t automatically dominate PCA just because they have larger raw variance.</li>
 <li><strong>Many zeros / dropouts (partially):</strong> SCTransform does not remove zeros, but it makes embeddings less sensitive to random dropouts:

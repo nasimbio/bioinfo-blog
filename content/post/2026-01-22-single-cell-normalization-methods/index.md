@@ -13,7 +13,7 @@ In a previous blog post, I discussed common **bulk RNA-seq normalization** metho
 - **Technical factors** (sequencing depth, capture efficiency, and many zeros/dropouts)
 - **Real biological differences** (cell type, cell size, cell-cycle stage, activation/metabolic state)
 
-In **bulk RNA-seq**, these cell-to-cell differences are averaged across millions of cells, and extraction/capture efficiency tends to be more consistent across samples—so library size is more tightly linked to sequencing depth.
+In **bulk RNA-seq**, these cell-to-cell differences are averaged across millions of cells, and extraction/capture efficiency tends to be more consistent across samples, so library size is more tightly linked to sequencing depth.
 
 In addition, **TPM includes gene-length correction**, which is largely irrelevant for **UMI-based scRNA-seq**, and TPM-style relative scaling can introduce **compositional bias**.
 
@@ -21,7 +21,7 @@ Below, I’ll walk through several common normalization methods used in **single
 
 ---
 
-## 1) 🧾 LogNormalize (scRNA/snRNA)
+## 1) 🧮 LogNormalize (scRNA/snRNA)
 
 **LogNormalize** is a commonly used normalization method for scRNA/snRNA-seq in Seurat. For each cell, it divides each gene’s raw count by the **total counts (library size)** in that cell, multiplies by a fixed **scale factor** (default = 10,000), and then applies a **log1p transformation**.
 
@@ -35,18 +35,18 @@ Below, I’ll walk through several common normalization methods used in **single
 
 ---
 
-## 2) 📈 SCTransform (model-based normalization + variance stabilization)
+## 2) 📊️ SCTransform (model-based normalization + variance stabilization)
 
 **SCTransform** is a **model-based normalization** and **variance-stabilization** method (commonly used for scRNA and also widely used in spatial transcriptomics workflows). Instead of simply dividing by total counts, it fits a **regularized Negative Binomial (NB) regression** for each gene across cells. The expected count depends on the cell’s depth (typically **total UMI**) and the gene’s baseline behavior learned across cells.
 
 From this fitted model, it computes **Pearson residuals**, which behave roughly like **z-scores**: they reflect how much the observed count deviates from what is expected **after accounting for depth**, scaled by expected variability.
 
 **In simpler terms:** SCTransform asks:  
-> “Given this cell’s depth and this gene’s typical behavior, what count should I expect?”  
-Then it converts the observed value into a *standardized deviation* from that expectation.
+> “Given this cell’s depth and this gene’s typical behavior, what count should I expect?”
+> Then it converts the observed value into a *standardized deviation* from that expectation.
 
 ### ✅ What problems does it target?
-- **Sequencing depth / global library size effects:** depth is modeled directly, so counts are interpreted relative to what is expected for that cell’s UMI total.
+- **Sequencing depth / global library size effects:** depth is modeled directly, so counts are interpreted relative to what is expected for that cell’s total UMI.
 - **Global capture-related scaling (partially):** if a cell has low capture efficiency, it often has low total UMIs; modeling depth reduces the impact of that global shift.
 - **Mean–variance effects:** residuals are variance-stabilized, so highly expressed genes don’t automatically dominate PCA just because they have larger raw variance.
 - **Many zeros / dropouts (partially):** SCTransform does not remove zeros, but it makes embeddings less sensitive to random dropouts:
