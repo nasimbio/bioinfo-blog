@@ -112,7 +112,7 @@ Variation in library size comes from:
 
 **Technical noise:**  
 1. Capture efficiency (5–20%, varies per cell)  
-2. Dropouts and zero inflation  
+2. Dropouts or many zeros  
 3. mRNA loss during lysis  
 4. Sequencing depth differences  
 
