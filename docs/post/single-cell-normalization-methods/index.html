@@ -62,7 +62,7 @@ In bulk RNA-seq, these cell-to-cell differences are averaged across millions of 
 Technical factors (sequencing depth, capture efficiency, and many zeros/dropouts) Real biological differences (cell type, cell size, cell-cycle stage, activation/metabolic state) In bulk RNA-seq, these cell-to-cell differences are averaged across millions of cells, and extraction/capture efficiency tends to be more consistent across samples, so library size is more tightly linked to sequencing depth.">
   <meta itemprop="datePublished" content="2026-01-22T00:00:00+00:00">
   <meta itemprop="dateModified" content="2026-01-22T00:00:00+00:00">
-  <meta itemprop="wordCount" content="1002">
+  <meta itemprop="wordCount" content="1045">
   <meta itemprop="keywords" content="Normalization,RNA-Seq,Spatial Transcriptomics,ATAC-Seq,ADT,Bioinformatics,Single-Cell"><meta property="og:url" content="https://nasimbio.github.io/bioinfo-blog/post/single-cell-normalization-methods/">
   <meta property="og:site_name" content="Bioinformatics Blogs By Nasim">
   <meta property="og:title" content="Single-Cell Normalization Methods">
@@ -197,7 +197,7 @@ Technical factors (sequencing depth, capture efficiency, and many zeros/dropouts
 <h3 id="-what-problems-does-it-target">✅ What problems does it target?</h3>
 <ul>
 <li><strong>Sequencing depth / library size differences:</strong> reduces the effect of cells having different total UMIs, so cells are compared based on <strong>relative abundance</strong> rather than raw counts.</li>
-<li><strong>Global scaling effects (partially):</strong> because low capture efficiency often results in low total UMIs, rescaling can reduce global differences driven by cell-wide totals.</li>
+<li><strong>Capture efficiency (partially):</strong> because low capture efficiency often results in low total UMIs, rescaling can reduce global differences driven by cell-wide totals, but it doesn’t fix dropouts at the gene level.</li>
 </ul>
 <h3 id="-what-does-it-not-solve">❌ What does it NOT solve?</h3>
 <ul>
@@ -210,13 +210,13 @@ Technical factors (sequencing depth, capture efficiency, and many zeros/dropouts
 <p>From this fitted model, it computes <strong>Pearson residuals</strong>, which behave roughly like <strong>z-scores</strong>: they reflect how much the observed count deviates from what is expected <strong>after accounting for depth</strong>, scaled by expected variability.</p>
 <p><strong>In simpler terms:</strong> SCTransform asks:</p>
 <blockquote>
-<p>“Given this cell’s depth and this gene’s typical behavior, what count should I expect?”
+<p>Given this cell’s depth and this gene’s typical behavior, what count should I expect?
 Then it converts the observed value into a <em>standardized deviation</em> from that expectation.</p>
 </blockquote>
 <h3 id="-what-problems-does-it-target-1">✅ What problems does it target?</h3>
 <ul>
 <li><strong>Sequencing depth / global library size effects:</strong> depth is modeled directly, so counts are interpreted relative to what is expected for that cell’s total UMI.</li>
-<li><strong>Global capture-related scaling (partially):</strong> if a cell has low capture efficiency, it often has low total UMIs; modeling depth reduces the impact of that global shift.</li>
+<li><strong>Capture efficiency (partially)::</strong> if a cell has low capture efficiency, it often has low total UMIs; modeling depth reduces the impact of that global shift.</li>
 <li><strong>Mean–variance effects:</strong> residuals are variance-stabilized, so highly expressed genes don’t automatically dominate PCA just because they have larger raw variance.</li>
 <li><strong>Many zeros / dropouts (partially):</strong> SCTransform does not remove zeros, but it makes embeddings less sensitive to random dropouts:
 <ul>
@@ -274,6 +274,11 @@ Then it converts the observed value into a <em>standardized deviation</em> from 
 <ul>
 <li><strong>Ambient/background antibody signal:</strong> CLR does not explicitly subtract background (methods like <strong>DSB</strong> are better for that).</li>
 <li>CLR does not model dropout like SCTransform does; a zero remains a zero (after pseudocount it becomes small).</li>
+</ul>
+<hr>
+<h2 id="-further-reading">📚 Further Reading</h2>
+<ul>
+<li>This paper <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8238499/#sec3">https://pmc.ncbi.nlm.nih.gov/articles/PMC8238499/#sec3</a> by <strong>Hao et al. (2021)</strong>,  includes practical workflow descriptions for preprocessing and normalization across modalities (e.g., log-normalization or SCTransform for RNA, CLR for ADT, and TF-IDF + LSI for ATAC).</li>
 </ul>
 <hr>
 </section>

@@ -27,7 +27,7 @@ Below, I’ll walk through several common normalization methods used in **single
 
 ### ✅ What problems does it target?
 - **Sequencing depth / library size differences:** reduces the effect of cells having different total UMIs, so cells are compared based on **relative abundance** rather than raw counts.
-- **Global scaling effects (partially):** because low capture efficiency often results in low total UMIs, rescaling can reduce global differences driven by cell-wide totals.
+- **Capture efficiency (partially):** because low capture efficiency often results in low total UMIs, rescaling can reduce global differences driven by cell-wide totals, but it doesn’t fix dropouts at the gene level.
 
 ### ❌ What does it NOT solve?
 - **Dropouts / excess zeros:** it does not model the count-generating process, so it cannot distinguish between a gene that is truly off vs. a gene that is expressed but missed (technical dropout).
@@ -42,12 +42,12 @@ Below, I’ll walk through several common normalization methods used in **single
 From this fitted model, it computes **Pearson residuals**, which behave roughly like **z-scores**: they reflect how much the observed count deviates from what is expected **after accounting for depth**, scaled by expected variability.
 
 **In simpler terms:** SCTransform asks:  
-> “Given this cell’s depth and this gene’s typical behavior, what count should I expect?”
+> Given this cell’s depth and this gene’s typical behavior, what count should I expect?
 > Then it converts the observed value into a *standardized deviation* from that expectation.
 
 ### ✅ What problems does it target?
 - **Sequencing depth / global library size effects:** depth is modeled directly, so counts are interpreted relative to what is expected for that cell’s total UMI.
-- **Global capture-related scaling (partially):** if a cell has low capture efficiency, it often has low total UMIs; modeling depth reduces the impact of that global shift.
+- **Capture efficiency (partially)::** if a cell has low capture efficiency, it often has low total UMIs; modeling depth reduces the impact of that global shift.
 - **Mean–variance effects:** residuals are variance-stabilized, so highly expressed genes don’t automatically dominate PCA just because they have larger raw variance.
 - **Many zeros / dropouts (partially):** SCTransform does not remove zeros, but it makes embeddings less sensitive to random dropouts:
   - a zero that is **expected** (low gene + low depth) is treated as **not informative**
@@ -107,6 +107,12 @@ So CLR turns ADT into **relative enrichment** values rather than raw counts.
 ### ❌ What does it NOT solve?
 - **Ambient/background antibody signal:** CLR does not explicitly subtract background (methods like **DSB** are better for that).
 - CLR does not model dropout like SCTransform does; a zero remains a zero (after pseudocount it becomes small).
+
+---
+
+## 📚 Further Reading
+
+- This paper https://pmc.ncbi.nlm.nih.gov/articles/PMC8238499/#sec3 by **Hao et al. (2021)**,  includes practical workflow descriptions for preprocessing and normalization across modalities (e.g., log-normalization or SCTransform for RNA, CLR for ADT, and TF-IDF + LSI for ATAC).
 
 ---
 
