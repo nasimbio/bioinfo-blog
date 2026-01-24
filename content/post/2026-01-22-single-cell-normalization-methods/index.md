@@ -8,7 +8,7 @@ tags: ["Normalization", "RNA-seq", "Spatial Transcriptomics", "ATAC-seq", "ADT",
 draft: false
 ---
 
-In a previous blog post, [Bulk RNA-seq Normalization Methods] ({{< relref "post/2025-11-21-bulk-rna-seq-normalization-methods/index.md" >}}) I discussed common **bulk RNA-seq normalization** methods. Those approaches (CPM, RPKM/FPKM, TPM) are generally **not appropriate for single-cell RNA-seq**, because in single-cell data the observed library size varies due to a mix of:
+In a previous blog post, [Bulk RNA-seq Normalization Methods]({{< relref "post/2025-11-21-bulk-rna-seq-normalization-methods/index.md" >}}) I discussed common **bulk RNA-seq normalization** methods. Those approaches (CPM, RPKM/FPKM, TPM) are generally **not appropriate for single-cell RNA-seq**, because in single-cell data the observed library size varies due to a mix of:
 
 - **Technical factors** (sequencing depth, capture efficiency, and many zeros/dropouts)
 - **Real biological differences** (cell type, cell size, cell-cycle stage, activation/metabolic state)
