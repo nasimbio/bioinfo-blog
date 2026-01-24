@@ -25,7 +25,7 @@
   
   <meta name="theme-color" />
 
-  <meta name="description" content="In a previous blog post, I discussed common bulk RNA-seq normalization methods. Those approaches (CPM, RPKM/FPKM, TPM) are generally not appropriate for single-cell RNA-seq, because in single-cell data the observed library size varies due to a mix of:
+  <meta name="description" content="In a previous blog post, [Bulk RNA-seq Normalization Methods] (/bioinfo-blog/post/bulk-rnaseq-normalization-methods/) I discussed common bulk RNA-seq normalization methods. Those approaches (CPM, RPKM/FPKM, TPM) are generally not appropriate for single-cell RNA-seq, because in single-cell data the observed library size varies due to a mix of:
 
 Technical factors (sequencing depth, capture efficiency, and many zeros/dropouts)
 Real biological differences (cell type, cell size, cell-cycle stage, activation/metabolic state)
@@ -58,15 +58,15 @@ In bulk RNA-seq, these cell-to-cell differences are averaged across millions of 
 
   <meta name="generator" content="Hugo 0.152.2">
   <meta itemprop="name" content="Single-Cell Normalization Methods">
-  <meta itemprop="description" content="In a previous blog post, I discussed common bulk RNA-seq normalization methods. Those approaches (CPM, RPKM/FPKM, TPM) are generally not appropriate for single-cell RNA-seq, because in single-cell data the observed library size varies due to a mix of:
+  <meta itemprop="description" content="In a previous blog post, [Bulk RNA-seq Normalization Methods] (/bioinfo-blog/post/bulk-rnaseq-normalization-methods/) I discussed common bulk RNA-seq normalization methods. Those approaches (CPM, RPKM/FPKM, TPM) are generally not appropriate for single-cell RNA-seq, because in single-cell data the observed library size varies due to a mix of:
 Technical factors (sequencing depth, capture efficiency, and many zeros/dropouts) Real biological differences (cell type, cell size, cell-cycle stage, activation/metabolic state) In bulk RNA-seq, these cell-to-cell differences are averaged across millions of cells, and extraction/capture efficiency tends to be more consistent across samples, so library size is more tightly linked to sequencing depth.">
   <meta itemprop="datePublished" content="2026-01-22T00:00:00+00:00">
   <meta itemprop="dateModified" content="2026-01-22T00:00:00+00:00">
-  <meta itemprop="wordCount" content="1045">
+  <meta itemprop="wordCount" content="1050">
   <meta itemprop="keywords" content="Normalization,RNA-Seq,Spatial Transcriptomics,ATAC-Seq,ADT,Bioinformatics,Single-Cell"><meta property="og:url" content="https://nasimbio.github.io/bioinfo-blog/post/single-cell-normalization-methods/">
   <meta property="og:site_name" content="Bioinformatics Blogs By Nasim">
   <meta property="og:title" content="Single-Cell Normalization Methods">
-  <meta property="og:description" content="In a previous blog post, I discussed common bulk RNA-seq normalization methods. Those approaches (CPM, RPKM/FPKM, TPM) are generally not appropriate for single-cell RNA-seq, because in single-cell data the observed library size varies due to a mix of:
+  <meta property="og:description" content="In a previous blog post, [Bulk RNA-seq Normalization Methods] (/bioinfo-blog/post/bulk-rnaseq-normalization-methods/) I discussed common bulk RNA-seq normalization methods. Those approaches (CPM, RPKM/FPKM, TPM) are generally not appropriate for single-cell RNA-seq, because in single-cell data the observed library size varies due to a mix of:
 Technical factors (sequencing depth, capture efficiency, and many zeros/dropouts) Real biological differences (cell type, cell size, cell-cycle stage, activation/metabolic state) In bulk RNA-seq, these cell-to-cell differences are averaged across millions of cells, and extraction/capture efficiency tends to be more consistent across samples, so library size is more tightly linked to sequencing depth.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
@@ -82,7 +82,7 @@ Technical factors (sequencing depth, capture efficiency, and many zeros/dropouts
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Single-Cell Normalization Methods">
-  <meta name="twitter:description" content="In a previous blog post, I discussed common bulk RNA-seq normalization methods. Those approaches (CPM, RPKM/FPKM, TPM) are generally not appropriate for single-cell RNA-seq, because in single-cell data the observed library size varies due to a mix of:
+  <meta name="twitter:description" content="In a previous blog post, [Bulk RNA-seq Normalization Methods] (/bioinfo-blog/post/bulk-rnaseq-normalization-methods/) I discussed common bulk RNA-seq normalization methods. Those approaches (CPM, RPKM/FPKM, TPM) are generally not appropriate for single-cell RNA-seq, because in single-cell data the observed library size varies due to a mix of:
 Technical factors (sequencing depth, capture efficiency, and many zeros/dropouts) Real biological differences (cell type, cell size, cell-cycle stage, activation/metabolic state) In bulk RNA-seq, these cell-to-cell differences are averaged across millions of cells, and extraction/capture efficiency tends to be more consistent across samples, so library size is more tightly linked to sequencing depth.">
 
   <link rel="canonical" href="https://nasimbio.github.io/bioinfo-blog/post/single-cell-normalization-methods/" />
@@ -183,7 +183,7 @@ Technical factors (sequencing depth, capture efficiency, and many zeros/dropouts
     <h1 class="my-0! pb-2.5">Single-Cell Normalization Methods</h1><div class="text-xs antialiased opacity-60"><time>Jan 22, 2026</time><span class="mx-1">&middot;</span>
       <span>Nasim Rahmatpour</span></div></header>
 
-  <section><p>In a previous blog post, I discussed common <strong>bulk RNA-seq normalization</strong> methods. Those approaches (CPM, RPKM/FPKM, TPM) are generally <strong>not appropriate for single-cell RNA-seq</strong>, because in single-cell data the observed library size varies due to a mix of:</p>
+  <section><p>In a previous blog post, [Bulk RNA-seq Normalization Methods] (/bioinfo-blog/post/bulk-rnaseq-normalization-methods/) I discussed common <strong>bulk RNA-seq normalization</strong> methods. Those approaches (CPM, RPKM/FPKM, TPM) are generally <strong>not appropriate for single-cell RNA-seq</strong>, because in single-cell data the observed library size varies due to a mix of:</p>
 <ul>
 <li><strong>Technical factors</strong> (sequencing depth, capture efficiency, and many zeros/dropouts)</li>
 <li><strong>Real biological differences</strong> (cell type, cell size, cell-cycle stage, activation/metabolic state)</li>
