@@ -216,7 +216,7 @@ Then it converts the observed value into a <em>standardized deviation</em> from 
 <h3 id="-what-problems-does-it-target-1">✅ What problems does it target?</h3>
 <ul>
 <li><strong>Sequencing depth / global library size effects:</strong> depth is modeled directly, so counts are interpreted relative to what is expected for that cell’s total UMI.</li>
-<li><strong>Capture efficiency (partially)::</strong> if a cell has low capture efficiency, it often has low total UMIs; modeling depth reduces the impact of that global shift.</li>
+<li><strong>Capture efficiency (partially):</strong> if a cell has low capture efficiency, it often has low total UMIs; modeling depth reduces the impact of that global shift.</li>
 <li><strong>Mean–variance effects:</strong> residuals are variance-stabilized, so highly expressed genes don’t automatically dominate PCA just because they have larger raw variance.</li>
 <li><strong>Many zeros / dropouts (partially):</strong> SCTransform does not remove zeros, but it makes embeddings less sensitive to random dropouts:
 <ul>

@@ -47,7 +47,7 @@ From this fitted model, it computes **Pearson residuals**, which behave roughly 
 
 ### ✅ What problems does it target?
 - **Sequencing depth / global library size effects:** depth is modeled directly, so counts are interpreted relative to what is expected for that cell’s total UMI.
-- **Capture efficiency (partially)::** if a cell has low capture efficiency, it often has low total UMIs; modeling depth reduces the impact of that global shift.
+- **Capture efficiency (partially):** if a cell has low capture efficiency, it often has low total UMIs; modeling depth reduces the impact of that global shift.
 - **Mean–variance effects:** residuals are variance-stabilized, so highly expressed genes don’t automatically dominate PCA just because they have larger raw variance.
 - **Many zeros / dropouts (partially):** SCTransform does not remove zeros, but it makes embeddings less sensitive to random dropouts:
   - a zero that is **expected** (low gene + low depth) is treated as **not informative**
